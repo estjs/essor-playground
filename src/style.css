@@ -1,0 +1,14 @@
+.iframe-container,
+.iframe-container :deep(iframe) {
+  width: 100%;
+  height: 100%;
+  border: none;
+  background-color: #fff;
+}
+.iframe-container.dark :deep(iframe) {
+  background-color: #1e1e1e;
+}
+iframe{
+  width: 100%;
+  height: 100%;
+}
