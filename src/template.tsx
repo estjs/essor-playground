@@ -1,13 +1,12 @@
-import {useSignal} from "essor"
 function App() {
-  const signal = useSignal("hello ")
+  let $signal = "hello "
   const props={a:'b'}
   const onClick = () => {
-    signal.value = ' world'
+    $signal = ' world'
   }
   return (
     <div class="red" props={props} onClick={onClick}>
-      <p {...props}>{signal.value} </p>
+      <p {...props}>{ $signal} </p>
     </div>
   )
 }
