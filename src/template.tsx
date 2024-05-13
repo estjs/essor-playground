@@ -1,12 +1,8 @@
 function App() {
-  let $signal = "hello "
-  const props={a:'b'}
-  const onClick = () => {
-    $signal = ' world'
-  }
+  const $value = 'hello word';
   return (
-    <div class="red" props={props} onClick={onClick}>
-      <p {...props}>{ $signal} </p>
+    <div>
+      <p>{$value}</p>
     </div>
-  )
+  );
 }
