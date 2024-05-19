@@ -136,7 +136,7 @@ export function Preview() {
   return (
     <div class="h-full w-full">
       <div ref={ref} class="h-50% of-hidden"></div>
-      <div ref={container} class="iframe-container h-50%"></div>
+      <div ref={container} class="iframe-container h-50% b-t-1"></div>
     </div>
   );
 }
