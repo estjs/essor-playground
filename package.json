@@ -11,7 +11,7 @@
     "test": "vitest"
   },
   "dependencies": {
-    "essor": "0.0.6-beta.1"
+    "essor": "^0.0.6-beta.3"
   },
   "devDependencies": {
     "@babel/core": "^7.24.4",
@@ -21,14 +21,14 @@
     "@estjs/eslint-config": "^1.1.1",
     "@types/babel__standalone": "^7.1.7",
     "@types/node": "^20.12.7",
-    "babel-plugin-essor": "0.0.6-beta.1",
+    "babel-plugin-essor": "^0.0.6-beta.3",
     "eslint": "^8.56.0",
     "happy-dom": "^14.7.1",
     "lodash-es": "^4.17.21",
     "monaco-editor": "^0.47.0",
     "typescript": "^5.4.5",
     "unocss": "^0.59.2",
-    "unplugin-essor": "0.0.6-beta.1",
+    "unplugin-essor": "^0.0.6-beta.3",
     "vite": "^5.2.8",
     "vite-plugin-inspect": "^0.8.3",
     "vitest": "^1.5.0"
