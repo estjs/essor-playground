@@ -1,6 +1,8 @@
 import * as monaco from 'monaco-editor';
 import { languages } from 'monaco-editor';
+import { useEffect } from 'essor';
 import EssorType from '../node_modules/essor/dist/essor.d.ts?raw';
+import { dark } from './utils';
 
 const customModel = monaco.editor.createModel(
   EssorType,
@@ -49,14 +51,13 @@ monaco.languages.typescript.typescriptDefaults.addExtraLib(
 );
 
 function getEditor(ref: HTMLDivElement, props: any = {}) {
-  const isDark = localStorage.getItem('color-schema') === 'dark' ? true : false;
 
   const editorInstance = monaco.editor.create(ref, {
     value: '',
     fontSize: 14,
     tabSize: 2,
     fontWeight: '500',
-    theme: isDark ? 'vs-dark' : 'vs-light',
+    theme: dark.value ? 'vs-dark' : 'vs-light',
     language: 'typescript',
     minimap: {
       enabled: false,

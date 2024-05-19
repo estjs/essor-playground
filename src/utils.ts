@@ -1,3 +1,4 @@
+import { useSignal } from 'essor';
 import { strFromU8, strToU8, unzlibSync, zlibSync } from 'fflate';
 
 export function debounce(fn: Function, n = 100) {
@@ -31,3 +32,15 @@ export function atou(base64: string): string {
   // https://base64.guru/developers/javascript/examples/unicode-strings
   return decodeURIComponent(escape(binary));
 }
+export const dark = useSignal(false);
+
+export function useDark() {
+  dark.value = localStorage.getItem('color-schema') === 'dark';
+  return dark.value;
+}
+
+export const toggleDark = () => {
+  dark.value = !dark.value;
+  localStorage.setItem('color-schema', dark.value ? 'dark' : 'light');
+  document.documentElement.classList.toggle('dark', dark.value);
+};

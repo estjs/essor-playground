@@ -1,9 +1,10 @@
-import { onDestroy, onMount, useSignal } from 'essor';
+import { onDestroy, onMount, useEffect, useSignal } from 'essor';
+import * as monaco from 'monaco-editor';
 import { getEditor } from './monaco';
 import { PreviewProxy } from './PreviewProxy';
 import srcdoc from './srcdoc.html?raw';
+import { dark } from './utils';
 import type { editor } from 'monaco-editor';
-
 export function Preview() {
   const ref = useSignal<HTMLDivElement | null>(null);
   const container = useSignal<HTMLDivElement | null>(null);
@@ -12,7 +13,6 @@ export function Preview() {
   let proxy: PreviewProxy;
 
   const runtimeError = useSignal('');
-  const previewTheme = useSignal(false);
 
   function createSandbox() {
     if (sandbox) {
@@ -41,7 +41,7 @@ export function Preview() {
     };
 
     const sandboxSrc = srcdoc
-      .replace(/<html>/, `<html class="${previewTheme.value ? 'dark' : ''}">`)
+      .replace(/<html>/, `<html >`)
       .replace(/<!--IMPORT_MAP-->/, JSON.stringify(importMap))
       .replace(/<!-- PREVIEW-OPTIONS-HEAD-HTML -->/, '')
       .replace(/<!--PREVIEW-OPTIONS-PLACEHOLDER-HTML-->/, '');
@@ -97,9 +97,13 @@ export function Preview() {
       },
     });
 
-    sandbox.addEventListener('load', () => {
-      proxy.handle_links();
-    });
+    sandbox.addEventListener(
+      'load',
+      () => {
+        proxy.handle_links();
+      },
+      { once: true },
+    );
   }
 
   async function updatePreview(code) {
@@ -129,6 +133,14 @@ export function Preview() {
     );
   });
 
+  useEffect(() => {
+    if (dark.value) {
+      monaco.editor.setTheme('vs-dark');
+    } else {
+      monaco.editor.setTheme('vs-light');
+    }
+  });
+
   onDestroy(() => {
     editor.dispose();
   });
@@ -136,7 +148,7 @@ export function Preview() {
   return (
     <div class="h-full w-full">
       <div ref={ref} class="h-50% of-hidden"></div>
-      <div ref={container} class="iframe-container b-base h-50% b-t-1"></div>
+      <div ref={container} class="iframe-container mr-14px h-50% b-t-1 b-base"></div>
     </div>
   );
 }

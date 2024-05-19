@@ -2,6 +2,12 @@
 <html>
   <head>
     <style>
+   
+      htm{
+        color-scheme: light;
+        color:black;
+        background-color: white;
+      }
       html.dark {
         color-scheme: dark;
         color:white;
@@ -45,6 +51,7 @@
 
         async function handle_message(ev) {
           let { action, cmd_id } = ev.data
+          console.log({ action, cmd_id });
           const send_message = (payload) =>
             parent.postMessage({ ...payload }, ev.origin)
           const send_reply = (payload) => send_message({ ...payload, cmd_id })
@@ -370,6 +377,14 @@
             return null
           }
         }
+
+        let isDark = localStorage.getItem('color-schema') === 'dark'
+        window.addEventListener("storage",()=>{
+          isDark = localStorage.getItem('color-schema') === 'dark';
+          document.documentElement.classList.toggle('dark',isDark);
+        })
+
+        document.documentElement.classList.toggle('dark',isDark);
       })()
     </script>
 

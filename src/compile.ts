@@ -30,9 +30,7 @@ self.addEventListener(
 
 export function loadHashCode() {
   const hash = location.hash;
-
   const code = atou(hash.slice(1));
-  console.log(code);
   return code;
 }
 

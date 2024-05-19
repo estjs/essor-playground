@@ -25,6 +25,9 @@ devDependencies:
   '@estjs/eslint-config':
     specifier: ^1.1.1
     version: 1.1.1(eslint@8.57.0)(prettier@3.2.5)(typescript@5.4.5)(vitest@1.6.0)
+  '@iconify-json/carbon':
+    specifier: ^1.1.5
+    version: 1.1.31
   '@types/babel__standalone':
     specifier: ^7.1.7
     version: 7.1.7
@@ -735,6 +738,12 @@ packages:
 
   /@humanwhocodes/object-schema@2.0.3:
     resolution: {integrity: sha512-93zYdMES/c1D69yZiKDBj0V24vqNzB/koF26KPaagAfd3P/4gUlh3Dys5ogAK+Exi9QyzlD8x/08Zt7wIKcDcA==}
+    dev: true
+
+  /@iconify-json/carbon@1.1.31:
+    resolution: {integrity: sha512-CAvECFfiwGyZmlcuM2JLMRDEN3VsIEZv6lml7Xf+3giQ5oXloADm0b5wiVPFZmONKM5jXERmx+E7YSvAtFJIbw==}
+    dependencies:
+      '@iconify/types': 2.0.0
     dev: true
 
   /@iconify/types@2.0.0:

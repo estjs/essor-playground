@@ -29,9 +29,9 @@ window.MonacoEnvironment = {
 
 function App() {
   return (
-    <div class="h-100vh w-100vw">
+    <div class="h-100vh w-100vw of-hidden">
       <Bar></Bar>
-      <div class="grid grid-cols-2 h-[calc(100%-50px)] w-full">
+      <div class="grid grid-cols-2 h-[calc(100%-50px)] w-full of-hidden">
         <Edit />
         <Preview />
       </div>
