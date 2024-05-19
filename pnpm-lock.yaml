@@ -6,7 +6,7 @@ settings:
 
 dependencies:
   essor:
-    specifier: 0.0.6-beta.3
+    specifier: ^0.0.6-beta.3
     version: 0.0.6-beta.3
 
 devDependencies:
@@ -32,8 +32,8 @@ devDependencies:
     specifier: ^20.12.7
     version: 20.12.8
   babel-plugin-essor:
-    specifier: 0.0.6-beta.1
-    version: 0.0.6-beta.1
+    specifier: ^0.0.6-beta.3
+    version: 0.0.6-beta.3
   eslint:
     specifier: ^8.56.0
     version: 8.57.0
@@ -53,8 +53,8 @@ devDependencies:
     specifier: ^0.59.2
     version: 0.59.2(postcss@8.4.38)(vite@5.2.11)
   unplugin-essor:
-    specifier: 0.0.6-beta.1
-    version: 0.0.6-beta.1(vite@5.2.11)
+    specifier: ^0.0.6-beta.3
+    version: 0.0.6-beta.3(vite@5.2.11)
   vite:
     specifier: ^5.2.8
     version: 5.2.11(@types/node@20.12.8)
@@ -1618,11 +1618,12 @@ packages:
       possible-typed-array-names: 1.0.0
     dev: true
 
-  /babel-plugin-essor@0.0.6-beta.1:
-    resolution: {integrity: sha512-u1R2jw9EoN4s3IMSVYGzzBVG96vp9hTnNfTm7k4Mv/4RWrrLPf6M7v7neLHn98towfI5O3sle/9nS1tjGOLnjg==}
+  /babel-plugin-essor@0.0.6-beta.3:
+    resolution: {integrity: sha512-j14CkcwsphRtIXQb8m98/Q8Uco9lmyTlEdtj2BbwOVCSBgnIGMphtq7CNv55bfmAkUuh4kUq7Rm/h5zEZKJrBw==}
     dependencies:
       '@babel/core': 7.24.5
       '@babel/types': 7.24.5
+      essor-shared: 0.0.6-beta.3
     transitivePeerDependencies:
       - supports-color
     dev: true
@@ -2668,7 +2669,6 @@ packages:
 
   /essor-shared@0.0.6-beta.3:
     resolution: {integrity: sha512-nVkuc+GidIY4zlybxjSyub9jrfWckNa4ISdOGH0731sRClBf4M5KrrMTsIqXbgYWYP20yGvR0ruFSNAVU3slQQ==}
-    dev: false
 
   /essor@0.0.6-beta.3:
     resolution: {integrity: sha512-uf/tdOKwvGbZG6hkLFIwa8i8j1S02JH36f54p7aV7VJ86vkmyzVzskQ74sDl1P/I6KgL47/SZtCZ5TiTgh+DzA==}
@@ -4661,8 +4661,8 @@ packages:
       - supports-color
     dev: true
 
-  /unplugin-essor@0.0.6-beta.1(vite@5.2.11):
-    resolution: {integrity: sha512-B+799UkTGHFaByjxmJFjSUCVvFlBJMyHfH05cJtKmld8jGOl3gFTZBctF+KFuPYQ4G0H+ScSRU99bN5OkOAmjg==}
+  /unplugin-essor@0.0.6-beta.3(vite@5.2.11):
+    resolution: {integrity: sha512-qEgF723EH6oLwdjSuKQarUtlqXL9Pt11G3IBnornHaTC5kLaWj4NXSdIgHISTSiUMOckkztZWCfHBw6IFaJmZA==}
     peerDependencies:
       esbuild: '*'
       rollup: ^4
@@ -4679,7 +4679,7 @@ packages:
         optional: true
     dependencies:
       '@babel/core': 7.24.5
-      babel-plugin-essor: 0.0.6-beta.1
+      babel-plugin-essor: 0.0.6-beta.3
       unplugin: 1.10.1
       vite: 5.2.11(@types/node@20.12.8)
     transitivePeerDependencies:

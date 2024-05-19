@@ -83,7 +83,7 @@ export function Preview() {
           } else {
             runtimeError.value = log.args[0];
           }
-        } else if (log.level === 'warn' && log.args[0].toString().includes('[Vue warn]')) {
+        } else if (log.level === 'warn' && log.args[0].toString().includes('[Essor warn]')) {
         }
       },
       on_console_group: (action: any) => {
