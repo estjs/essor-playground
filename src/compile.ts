@@ -1,5 +1,6 @@
 import { transform } from '@babel/standalone';
 import BabelPluginEssor from 'babel-plugin-essor';
+import { atou, utoa } from './utils';
 
 function babelTransform(filename: string, code: string) {
   const transformedCode = transform(code, {
@@ -7,7 +8,6 @@ function babelTransform(filename: string, code: string) {
     presets: ['typescript'],
     filename: `${filename}.tsx`,
   }).code;
-
   return transformedCode!;
 }
 
@@ -16,7 +16,8 @@ self.addEventListener(
   message => {
     if (message.data.type === 'editValueChange') {
       const data = message.data.value;
-      console.log(data);
+
+      setHashCode(data);
 
       self.postMessage({
         type: 'compile',
@@ -26,3 +27,15 @@ self.addEventListener(
   },
   false,
 );
+
+export function loadHashCode() {
+  const hash = location.hash;
+
+  const code = atou(hash.slice(1));
+  console.log(code);
+  return code;
+}
+
+export function setHashCode(code: string) {
+  location.hash = utoa(code);
+}

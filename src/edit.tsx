@@ -1,6 +1,7 @@
 import { onDestroy, onMount, useSignal } from 'essor';
 import { getEditor } from './monaco';
 import template from './template?raw';
+import { loadHashCode } from './compile';
 import type { editor } from 'monaco-editor';
 
 export function Edit() {
@@ -10,7 +11,8 @@ export function Edit() {
   onMount(async () => {
     editor = await getEditor(ref.value!);
 
-    editor.setValue(template);
+    const code = loadHashCode();
+    editor.setValue(code ?? template);
 
     self.postMessage({
       type: 'editValueChange',
