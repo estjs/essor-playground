@@ -39,7 +39,7 @@ devDependencies:
     version: 8.57.0
   happy-dom:
     specifier: ^14.7.1
-    version: 14.7.1
+    version: 14.11.0
   lodash-es:
     specifier: ^4.17.21
     version: 4.17.21
@@ -63,7 +63,7 @@ devDependencies:
     version: 0.8.4(vite@5.2.11)
   vitest:
     specifier: ^1.5.0
-    version: 1.6.0(@types/node@20.12.8)(happy-dom@14.7.1)
+    version: 1.6.0(@types/node@20.12.8)(happy-dom@14.11.0)
 
 packages:
 
@@ -2538,7 +2538,7 @@ packages:
       '@typescript-eslint/eslint-plugin': 7.6.0(@typescript-eslint/parser@7.6.0)(eslint@8.57.0)(typescript@5.4.5)
       '@typescript-eslint/utils': 7.6.0(eslint@8.57.0)(typescript@5.4.5)
       eslint: 8.57.0
-      vitest: 1.6.0(@types/node@20.12.8)(happy-dom@14.7.1)
+      vitest: 1.6.0(@types/node@20.12.8)(happy-dom@14.11.0)
     transitivePeerDependencies:
       - supports-color
       - typescript
@@ -2975,8 +2975,8 @@ packages:
       duplexer: 0.1.2
     dev: true
 
-  /happy-dom@14.7.1:
-    resolution: {integrity: sha512-v60Q0evZ4clvMcrAh5/F8EdxDdfHdFrtffz/CNe10jKD+nFweZVxM91tW+UyY2L4AtpgIaXdZ7TQmiO1pfcwbg==}
+  /happy-dom@14.11.0:
+    resolution: {integrity: sha512-vu25dY7YJqLuTG/3ADC0FZRRF0yNBp3q2K0YTN08opXdZi8V/YzIJDNJWFiCnDIuyc+RrCIE093+H5fa9Trlxg==}
     engines: {node: '>=16.0.0'}
     dependencies:
       entities: 4.5.0
@@ -4806,7 +4806,7 @@ packages:
       fsevents: 2.3.3
     dev: true
 
-  /vitest@1.6.0(@types/node@20.12.8)(happy-dom@14.7.1):
+  /vitest@1.6.0(@types/node@20.12.8)(happy-dom@14.11.0):
     resolution: {integrity: sha512-H5r/dN06swuFnzNFhq/dnz37bPXnq8xB2xB5JOVk8K09rUtoeNN+LHWkoQ0A/i3hvbUKKcCei9KpbxqHMLhLLA==}
     engines: {node: ^18.0.0 || >=20.0.0}
     hasBin: true
@@ -4841,7 +4841,7 @@ packages:
       chai: 4.4.1
       debug: 4.3.4
       execa: 8.0.1
-      happy-dom: 14.7.1
+      happy-dom: 14.11.0
       local-pkg: 0.5.0
       magic-string: 0.30.10
       pathe: 1.1.2
