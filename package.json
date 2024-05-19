@@ -23,6 +23,7 @@
     "@types/node": "^20.12.7",
     "babel-plugin-essor": "^0.0.6-beta.3",
     "eslint": "^8.56.0",
+    "fflate": "^0.8.2",
     "happy-dom": "^14.7.1",
     "lodash-es": "^4.17.21",
     "monaco-editor": "^0.47.0",
