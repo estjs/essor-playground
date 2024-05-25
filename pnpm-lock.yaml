@@ -50,8 +50,8 @@ devDependencies:
     specifier: ^4.17.21
     version: 4.17.21
   monaco-editor:
-    specifier: ^0.47.0
-    version: 0.47.0
+    specifier: ^0.49.0
+    version: 0.49.0
   typescript:
     specifier: ^5.4.5
     version: 5.4.5
@@ -3625,8 +3625,8 @@ packages:
       ufo: 1.5.3
     dev: true
 
-  /monaco-editor@0.47.0:
-    resolution: {integrity: sha512-VabVvHvQ9QmMwXu4du008ZDuyLnHs9j7ThVFsiJoXSOQk18+LF89N4ADzPbFenm0W4V2bGHnFBztIRQTgBfxzw==}
+  /monaco-editor@0.49.0:
+    resolution: {integrity: sha512-2I8/T3X/hLxB2oPHgqcNYUVdA/ZEFShT7IAujifIPMfKkNbLOqY8XCoyHCXrsdjb36dW9MwoTwBCFpXKMwNwaQ==}
     dev: true
 
   /mrmime@2.0.0:
