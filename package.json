@@ -11,28 +11,28 @@
     "test": "vitest"
   },
   "dependencies": {
-    "essor": "^0.0.6-beta.3"
+    "essor": "^0.0.6-beta.7"
   },
   "devDependencies": {
-    "@babel/core": "^7.24.4",
-    "@babel/preset-typescript": "^7.24.1",
-    "@babel/standalone": "^7.24.4",
-    "@babel/types": "^7.24.0",
-    "@estjs/eslint-config": "^1.1.1",
-    "@iconify-json/carbon": "^1.1.5",
+    "@babel/core": "^7.24.6",
+    "@babel/preset-typescript": "^7.24.6",
+    "@babel/standalone": "^7.24.6",
+    "@babel/types": "^7.24.6",
+    "@estjs/eslint-config": "^1.1.2",
+    "@iconify-json/carbon": "^1.1.34",
     "@types/babel__standalone": "^7.1.7",
-    "@types/node": "^20.12.7",
-    "babel-plugin-essor": "^0.0.6-beta.3",
+    "@types/node": "^20.12.13",
+    "babel-plugin-essor": "^0.0.6-beta.7",
     "eslint": "^8.56.0",
     "fflate": "^0.8.2",
-    "happy-dom": "^14.7.1",
+    "happy-dom": "^14.12.0",
     "lodash-es": "^4.17.21",
-    "monaco-editor": "^0.47.0",
+    "monaco-editor": "^0.49.0",
     "typescript": "^5.4.5",
-    "unocss": "^0.59.2",
-    "unplugin-essor": "^0.0.6-beta.3",
-    "vite": "^5.2.8",
-    "vite-plugin-inspect": "^0.8.3",
-    "vitest": "^1.5.0"
+    "unocss": "^0.60.3",
+    "unplugin-essor": "^0.0.6-beta.7",
+    "vite": "^5.2.12",
+    "vite-plugin-inspect": "^0.8.4",
+    "vitest": "^1.6.0"
   }
 }
