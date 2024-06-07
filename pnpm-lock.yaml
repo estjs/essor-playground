@@ -24,7 +24,7 @@ devDependencies:
     version: 7.24.6
   '@estjs/eslint-config':
     specifier: ^1.1.2
-    version: 1.1.2(eslint@8.57.0)(prettier@3.2.5)(typescript@5.4.5)(vitest@1.6.0)
+    version: 1.1.2(eslint@8.57.0)(prettier@3.3.1)(typescript@5.4.5)(vitest@1.6.0)
   '@iconify-json/carbon':
     specifier: ^1.1.34
     version: 1.1.34
@@ -36,7 +36,7 @@ devDependencies:
     version: 20.12.13
   babel-plugin-essor:
     specifier: ^0.0.6-beta.7
-    version: 0.0.6-beta.7
+    version: 0.0.6-beta.9
   eslint:
     specifier: ^8.56.0
     version: 8.57.0
@@ -715,7 +715,7 @@ packages:
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
     dev: true
 
-  /@estjs/eslint-config@1.1.2(eslint@8.57.0)(prettier@3.2.5)(typescript@5.4.5)(vitest@1.6.0):
+  /@estjs/eslint-config@1.1.2(eslint@8.57.0)(prettier@3.3.1)(typescript@5.4.5)(vitest@1.6.0):
     resolution: {integrity: sha512-ZGaJSHQSytrikB4Pr2clqfm6t+c7wWOEIHLiaHfGYEhEwFGHQS3WQcC+DhoU8h9vWg1UJr/VJeouTtJ7ggUzkQ==}
     engines: {node: '>=16.14.0'}
     peerDependencies:
@@ -734,7 +734,7 @@ packages:
       eslint-plugin-jsonc: 2.15.1(eslint@8.57.0)
       eslint-plugin-markdown: 4.0.1(eslint@8.57.0)
       eslint-plugin-n: 16.6.2(eslint@8.57.0)
-      eslint-plugin-prettier: 5.1.3(eslint-config-prettier@9.1.0)(eslint@8.57.0)(prettier@3.2.5)
+      eslint-plugin-prettier: 5.1.3(eslint-config-prettier@9.1.0)(eslint@8.57.0)(prettier@3.3.1)
       eslint-plugin-react: 7.34.1(eslint@8.57.0)
       eslint-plugin-react-hooks: 4.6.0(eslint@8.57.0)
       eslint-plugin-react-refresh: 0.4.6(eslint@8.57.0)
@@ -1683,6 +1683,16 @@ packages:
       - supports-color
     dev: true
 
+  /babel-plugin-essor@0.0.6-beta.9:
+    resolution: {integrity: sha512-vFdy0xq8Yh+8bnpNNB6Lpzt199cQrL5CU9OCBXfWdd4dOuzTJBKnEb2mIy4ME2iqRh3WwLBhb5RbmSx7jsXkHg==}
+    dependencies:
+      '@babel/core': 7.24.6
+      '@babel/types': 7.24.6
+      essor-shared: 0.0.6-beta.9
+    transitivePeerDependencies:
+      - supports-color
+    dev: true
+
   /balanced-match@1.0.2:
     resolution: {integrity: sha512-3oSeUO0TMV67hN1AmbXsK4yaqU7tjiHlbxRDZOpH0KW9+CeX4bRAaX0Anxt0tx2MrpRpWwQaPwIlISEJhYU5Pw==}
     dev: true
@@ -2411,7 +2421,7 @@ packages:
       semver: 7.6.0
     dev: true
 
-  /eslint-plugin-prettier@5.1.3(eslint-config-prettier@9.1.0)(eslint@8.57.0)(prettier@3.2.5):
+  /eslint-plugin-prettier@5.1.3(eslint-config-prettier@9.1.0)(eslint@8.57.0)(prettier@3.3.1):
     resolution: {integrity: sha512-C9GCVAs4Eq7ZC/XFQHITLiHJxQngdtraXaM+LoUFoFp/lHNl2Zn8f3WQbe9HvTBBQ9YnKFB0/2Ajdqwo5D1EAw==}
     engines: {node: ^14.18.0 || >=16.0.0}
     peerDependencies:
@@ -2427,7 +2437,7 @@ packages:
     dependencies:
       eslint: 8.57.0
       eslint-config-prettier: 9.1.0(eslint@8.57.0)
-      prettier: 3.2.5
+      prettier: 3.3.1
       prettier-linter-helpers: 1.0.0
       synckit: 0.8.8
     dev: true
@@ -2714,6 +2724,10 @@ packages:
 
   /essor-shared@0.0.6-beta.7:
     resolution: {integrity: sha512-E9lJ+c5eCR8EugSmnLBtZJ/fy5ArHforMWjLkInJk0hV3MeR5eL6CWZVxInm1A8LFdYGnfC1/6Q/7uned6dPgA==}
+
+  /essor-shared@0.0.6-beta.9:
+    resolution: {integrity: sha512-zexfinTuuzw0FRPnsmgGE61haOS9fPtHPGyfT0PwxPef7nA3BeIeTmufcv2bHXvpdbBHreHo5xhE7YWNTZ+omQ==}
+    dev: true
 
   /essor@0.0.6-beta.7:
     resolution: {integrity: sha512-QID7bDUEU89b7Soyqz4pMmdSn/+nod706XAbVFjluAa276ZM5l/q/4x7OkK8YmzUbdYBUJNOGELhGhh0eUcQ4A==}
@@ -4038,8 +4052,8 @@ packages:
       fast-diff: 1.3.0
     dev: true
 
-  /prettier@3.2.5:
-    resolution: {integrity: sha512-3/GWa9aOC0YeD7LUfvOG2NiDyhOWRvt1k+rcKhOuYnMY24iiCphgneUfJDyFXd6rZCAnuLBv6UeAULtrhT/F4A==}
+  /prettier@3.3.1:
+    resolution: {integrity: sha512-7CAwy5dRsxs8PHXT3twixW9/OEll8MLE0VRPCJyl7CkS6VHGPSlsVaWTiASPTyGyYRyApxlaWTzwUxVNrhcwDg==}
     engines: {node: '>=14'}
     hasBin: true
     dev: true
