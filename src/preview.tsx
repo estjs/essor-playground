@@ -4,6 +4,7 @@ import { getEditor } from './monaco';
 import { PreviewProxy } from './PreviewProxy';
 import srcdoc from './srcdoc.html?raw';
 import { dark } from './utils';
+import { importMapCOnfig } from './config';
 import type { editor } from 'monaco-editor';
 export function Preview() {
   const ref = useSignal<HTMLDivElement | null>(null);
@@ -36,7 +37,7 @@ export function Preview() {
     );
 
     const importMap = {
-      imports: { essor: 'https://cdn.jsdelivr.net/npm/essor@0.0.5/dist/index.esm.js' },
+      imports: importMapCOnfig,
       scopes: {},
     };
 
@@ -49,9 +50,6 @@ export function Preview() {
     container.value!.append(sandbox);
 
     proxy = new PreviewProxy(sandbox, {
-      on_fetch_progress: (progress: any) => {
-        // pending_imports = progress;
-      },
       on_error: (event: any) => {
         const msg = event.value instanceof Error ? event.value.message : event.value;
         if (
@@ -84,16 +82,8 @@ export function Preview() {
             runtimeError.value = log.args[0];
           }
         } else if (log.level === 'warn' && log.args[0].toString().includes('[Essor warn]')) {
+          // TODO:
         }
-      },
-      on_console_group: (action: any) => {
-        // group_logs(action.label, false);
-      },
-      on_console_group_end: () => {
-        // ungroup_logs();
-      },
-      on_console_group_collapsed: (action: any) => {
-        // group_logs(action.label, true);
       },
     });
 
@@ -106,7 +96,7 @@ export function Preview() {
     );
   }
 
-  async function updatePreview(code) {
+  async function updatePreview(code: string) {
     const codeToEval = [
       `import { h as _h$2 } from "essor";
         ${code}
