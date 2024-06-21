@@ -1,10 +1,9 @@
 import { onDestroy, onMount, useEffect, useSignal } from 'essor';
-import * as monaco from 'monaco-editor';
 import { getEditor } from './monaco';
 import { PreviewProxy } from './PreviewProxy';
 import srcdoc from './srcdoc.html?raw';
-import { dark } from './utils';
 import { importMapCOnfig } from './config';
+import { setDark } from './utils';
 import type { editor } from 'monaco-editor';
 export function Preview() {
   const ref = useSignal<HTMLDivElement | null>(null);
@@ -109,6 +108,8 @@ export function Preview() {
   onMount(() => {
     createSandbox();
     editor = getEditor(ref.value!);
+
+    setDark();
     self.addEventListener(
       'message',
       message => {
@@ -124,11 +125,7 @@ export function Preview() {
   });
 
   useEffect(() => {
-    if (dark.value) {
-      monaco.editor.setTheme('vs-dark');
-    } else {
-      monaco.editor.setTheme('vs-light');
-    }
+    setDark();
   });
 
   onDestroy(() => {

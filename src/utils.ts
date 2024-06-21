@@ -1,6 +1,6 @@
 import { useSignal } from 'essor';
 import { strFromU8, strToU8, unzlibSync, zlibSync } from 'fflate';
-
+import * as monaco from 'monaco-editor';
 export function debounce(fn: Function, n = 100) {
   let handle: any;
   return (...args: any[]) => {
@@ -44,3 +44,11 @@ export const toggleDark = () => {
   localStorage.setItem('color-schema', dark.value ? 'dark' : 'light');
   document.documentElement.classList.toggle('dark', dark.value);
 };
+
+export function setDark() {
+  if (dark.value) {
+    monaco.editor.setTheme('vs-dark');
+  } else {
+    monaco.editor.setTheme('vs-light');
+  }
+}

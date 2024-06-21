@@ -1,6 +1,5 @@
 import * as monaco from 'monaco-editor';
 import { languages } from 'monaco-editor';
-import { useEffect } from 'essor';
 import EssorType from '../node_modules/essor/dist/essor.d.ts?raw';
 import { dark } from './utils';
 
@@ -51,7 +50,6 @@ monaco.languages.typescript.typescriptDefaults.addExtraLib(
 );
 
 function getEditor(ref: HTMLDivElement, props: any = {}) {
-
   const editorInstance = monaco.editor.create(ref, {
     value: '',
     fontSize: 14,

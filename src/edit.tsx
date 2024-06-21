@@ -1,9 +1,8 @@
 import { onDestroy, onMount, useEffect, useSignal } from 'essor';
-import * as monaco from 'monaco-editor';
 import { getEditor } from './monaco';
 import template from './template?raw';
 import { loadHashCode } from './compile';
-import { dark } from './utils';
+import { setDark } from './utils';
 import type { editor } from 'monaco-editor';
 export function Edit() {
   const ref = useSignal<HTMLDivElement | null>(null);
@@ -18,7 +17,7 @@ export function Edit() {
 
   onMount(async () => {
     editor = await getEditor(ref.value!);
-
+    setDark();
     const code = loadHashCode();
     editor.setValue(code || template);
     postMsg();
@@ -28,11 +27,7 @@ export function Edit() {
   });
 
   useEffect(() => {
-    if (dark.value) {
-      monaco.editor.setTheme('vs-dark');
-    } else {
-      monaco.editor.setTheme('vs-light');
-    }
+    setDark();
     if (editor) {
       postMsg();
     }
