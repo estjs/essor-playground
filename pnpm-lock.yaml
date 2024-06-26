@@ -6,8 +6,8 @@ settings:
 
 dependencies:
   essor:
-    specifier: ^0.0.6-beta.14
-    version: 0.0.6-beta.14
+    specifier: ^0.0.6-beta.15
+    version: 0.0.6-beta.15
 
 devDependencies:
   '@babel/core':
@@ -35,8 +35,8 @@ devDependencies:
     specifier: ^20.14.6
     version: 20.14.6
   babel-plugin-essor:
-    specifier: ^0.0.6-beta.14
-    version: 0.0.6-beta.14
+    specifier: ^0.0.6-beta.15
+    version: 0.0.6-beta.15
   eslint:
     specifier: ^9.5.0
     version: 9.5.0
@@ -1740,12 +1740,12 @@ packages:
       - supports-color
     dev: true
 
-  /babel-plugin-essor@0.0.6-beta.14:
-    resolution: {integrity: sha512-3pIIKCY05Mhqvy6sO+mlNtDkauy/pvXuZ0QvmAbw4gITavAT2Z5w5YumM8CbFr9FEEui9jVS1ViZykA91PEs+Q==}
+  /babel-plugin-essor@0.0.6-beta.15:
+    resolution: {integrity: sha512-nPFybvPJ1bi8DRp/5O3lSO1KFeL0kjQKvK9uWTeSDvDtSrOm2fbiq4+/3Gq4WyGvesSDVvcpKCSm98hDpEUOXg==}
     dependencies:
       '@babel/core': 7.24.7
       '@babel/types': 7.24.7
-      essor-shared: 0.0.6-beta.14
+      essor-shared: 0.0.6-beta.15
     transitivePeerDependencies:
       - supports-color
     dev: true
@@ -2801,14 +2801,14 @@ packages:
     resolution: {integrity: sha512-sG9xnnMLeRM1ME3diOffczTGx8zoaoLnScHySO5gI3d90ihgQR9lO11u2404VSubT/MrKngBTRsRhWYOtJlEaw==}
     dev: true
 
-  /essor-shared@0.0.6-beta.14:
-    resolution: {integrity: sha512-g4t2zmPdgGw02MWJ4ssGC98GKzadijbkgrXEn5FVPsLGxXbXdJ3kferBLpwmlhlEuF7dq33NKXpdP95r61E0hw==}
+  /essor-shared@0.0.6-beta.15:
+    resolution: {integrity: sha512-NvKPDAKxTFQdrxef9J3jd4JY6HJWkoAgm6CmTNIaUZCr068PntW+Ilc4z7/3weWNEfK8qTtaKbJ5Tp/R26nvUg==}
 
-  /essor@0.0.6-beta.14:
-    resolution: {integrity: sha512-VRgHsX3IY6Gbj8Shvim4wY7tp3wSRpXZgmV0xEKGmT76Mn5UYVJheaZzTHDZWprp+hLJnql9SU/zQCheS25cDg==}
+  /essor@0.0.6-beta.15:
+    resolution: {integrity: sha512-XDmCPaxx5HIXKYaSGQhSNgqOUBcP+KMgHCzrYJANwbLyoXPFODLFu7qL9bz+T5BDc++KRJeISRqg/m89zU6/iA==}
     dependencies:
       csstype: 3.1.3
-      essor-shared: 0.0.6-beta.14
+      essor-shared: 0.0.6-beta.15
     dev: false
 
   /estraverse@5.3.0:
