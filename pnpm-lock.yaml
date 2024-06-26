@@ -6,8 +6,8 @@ settings:
 
 dependencies:
   essor:
-    specifier: ^0.0.6-beta.13
-    version: 0.0.6-beta.13
+    specifier: ^0.0.6-beta.14
+    version: 0.0.6-beta.14
 
 devDependencies:
   '@babel/core':
@@ -35,8 +35,8 @@ devDependencies:
     specifier: ^20.14.6
     version: 20.14.6
   babel-plugin-essor:
-    specifier: ^0.0.6-beta.13
-    version: 0.0.6-beta.13
+    specifier: ^0.0.6-beta.14
+    version: 0.0.6-beta.14
   eslint:
     specifier: ^9.5.0
     version: 9.5.0
@@ -1740,6 +1740,16 @@ packages:
       - supports-color
     dev: true
 
+  /babel-plugin-essor@0.0.6-beta.14:
+    resolution: {integrity: sha512-3pIIKCY05Mhqvy6sO+mlNtDkauy/pvXuZ0QvmAbw4gITavAT2Z5w5YumM8CbFr9FEEui9jVS1ViZykA91PEs+Q==}
+    dependencies:
+      '@babel/core': 7.24.7
+      '@babel/types': 7.24.7
+      essor-shared: 0.0.6-beta.14
+    transitivePeerDependencies:
+      - supports-color
+    dev: true
+
   /balanced-match@1.0.2:
     resolution: {integrity: sha512-3oSeUO0TMV67hN1AmbXsK4yaqU7tjiHlbxRDZOpH0KW9+CeX4bRAaX0Anxt0tx2MrpRpWwQaPwIlISEJhYU5Pw==}
     dev: true
@@ -2789,12 +2799,16 @@ packages:
 
   /essor-shared@0.0.6-beta.13:
     resolution: {integrity: sha512-sG9xnnMLeRM1ME3diOffczTGx8zoaoLnScHySO5gI3d90ihgQR9lO11u2404VSubT/MrKngBTRsRhWYOtJlEaw==}
+    dev: true
 
-  /essor@0.0.6-beta.13:
-    resolution: {integrity: sha512-NgholhxaR8FM3AfFsiMHL7r5apKDTQVTQYdjhqg8gW+96FwU+FJsRkGJzNhs+KOpu+heAV+NscpLjEYpLpsNmQ==}
+  /essor-shared@0.0.6-beta.14:
+    resolution: {integrity: sha512-g4t2zmPdgGw02MWJ4ssGC98GKzadijbkgrXEn5FVPsLGxXbXdJ3kferBLpwmlhlEuF7dq33NKXpdP95r61E0hw==}
+
+  /essor@0.0.6-beta.14:
+    resolution: {integrity: sha512-VRgHsX3IY6Gbj8Shvim4wY7tp3wSRpXZgmV0xEKGmT76Mn5UYVJheaZzTHDZWprp+hLJnql9SU/zQCheS25cDg==}
     dependencies:
       csstype: 3.1.3
-      essor-shared: 0.0.6-beta.13
+      essor-shared: 0.0.6-beta.14
     dev: false
 
   /estraverse@5.3.0:

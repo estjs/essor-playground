@@ -11,7 +11,7 @@
     "test": "vitest"
   },
   "dependencies": {
-    "essor": "^0.0.6-beta.13"
+    "essor": "^0.0.6-beta.14"
   },
   "devDependencies": {
     "@babel/core": "^7.24.7",
@@ -22,7 +22,7 @@
     "@iconify-json/carbon": "^1.1.36",
     "@types/babel__standalone": "^7.1.7",
     "@types/node": "^20.14.6",
-    "babel-plugin-essor": "^0.0.6-beta.13",
+    "babel-plugin-essor": "^0.0.6-beta.14",
     "eslint": "^9.5.0",
     "fflate": "^0.8.2",
     "happy-dom": "^14.12.0",
