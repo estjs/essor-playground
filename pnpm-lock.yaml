@@ -24,7 +24,7 @@ devDependencies:
     version: 7.24.7
   '@estjs/eslint-config':
     specifier: ^1.1.2
-    version: 1.1.2(eslint@9.5.0)(prettier@3.2.5)(typescript@5.4.5)(vitest@1.6.0)
+    version: 1.1.2(eslint@9.5.0)(prettier@3.3.2)(typescript@5.4.5)(vitest@1.6.0)
   '@iconify-json/carbon':
     specifier: ^1.1.36
     version: 1.1.36
@@ -60,7 +60,7 @@ devDependencies:
     version: 0.61.0(postcss@8.4.38)(vite@5.3.1)
   unplugin-essor:
     specifier: ^0.0.6-beta.13
-    version: 0.0.6-beta.13(vite@5.3.1)
+    version: 0.0.6-beta.15(vite@5.3.1)
   vite:
     specifier: ^5.3.1
     version: 5.3.1(@types/node@20.14.6)
@@ -772,7 +772,7 @@ packages:
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
     dev: true
 
-  /@estjs/eslint-config@1.1.2(eslint@9.5.0)(prettier@3.2.5)(typescript@5.4.5)(vitest@1.6.0):
+  /@estjs/eslint-config@1.1.2(eslint@9.5.0)(prettier@3.3.2)(typescript@5.4.5)(vitest@1.6.0):
     resolution: {integrity: sha512-ZGaJSHQSytrikB4Pr2clqfm6t+c7wWOEIHLiaHfGYEhEwFGHQS3WQcC+DhoU8h9vWg1UJr/VJeouTtJ7ggUzkQ==}
     engines: {node: '>=16.14.0'}
     peerDependencies:
@@ -791,7 +791,7 @@ packages:
       eslint-plugin-jsonc: 2.15.1(eslint@9.5.0)
       eslint-plugin-markdown: 4.0.1(eslint@9.5.0)
       eslint-plugin-n: 16.6.2(eslint@9.5.0)
-      eslint-plugin-prettier: 5.1.3(eslint-config-prettier@9.1.0)(eslint@9.5.0)(prettier@3.2.5)
+      eslint-plugin-prettier: 5.1.3(eslint-config-prettier@9.1.0)(eslint@9.5.0)(prettier@3.3.2)
       eslint-plugin-react: 7.34.1(eslint@9.5.0)
       eslint-plugin-react-hooks: 4.6.0(eslint@9.5.0)
       eslint-plugin-react-refresh: 0.4.6(eslint@9.5.0)
@@ -1546,14 +1546,6 @@ packages:
       pretty-format: 29.7.0
     dev: true
 
-  /acorn-jsx@5.3.2(acorn@8.11.3):
-    resolution: {integrity: sha512-rq9s+JNhf0IChjtDXxllJ7g41oZk5SlXtp0LHwyA5cejwn7vKmKp4pPri6YEePv2PU65sAsegbXtIinmDFDXgQ==}
-    peerDependencies:
-      acorn: ^6.0.0 || ^7.0.0 || ^8.0.0
-    dependencies:
-      acorn: 8.11.3
-    dev: true
-
   /acorn-jsx@5.3.2(acorn@8.12.0):
     resolution: {integrity: sha512-rq9s+JNhf0IChjtDXxllJ7g41oZk5SlXtp0LHwyA5cejwn7vKmKp4pPri6YEePv2PU65sAsegbXtIinmDFDXgQ==}
     peerDependencies:
@@ -1565,12 +1557,6 @@ packages:
   /acorn-walk@8.3.2:
     resolution: {integrity: sha512-cjkyv4OtNCIeqhHrfS81QWXoCBPExR/J62oyEqepVw8WaQeSqpW2uhuLPh1m9eWhDuOo/jUXVTlifvesOWp/4A==}
     engines: {node: '>=0.4.0'}
-    dev: true
-
-  /acorn@8.11.3:
-    resolution: {integrity: sha512-Y9rRfJG5jcKOE0CLisYbojUjIrIEE7AGMzA/Sm4BslANhbS+cDMpgBdcPT91oJ7OuJ9hYJBx59RjbhxVnrF8Xg==}
-    engines: {node: '>=0.4.0'}
-    hasBin: true
     dev: true
 
   /acorn@8.12.0:
@@ -1730,16 +1716,6 @@ packages:
       possible-typed-array-names: 1.0.0
     dev: true
 
-  /babel-plugin-essor@0.0.6-beta.13:
-    resolution: {integrity: sha512-XHZBuCPcnwQRzVcgPFcDP3dk7Sq6aaJl7IDh5vi5jEXzf3CDNdc5m7jetJrKqeJughDn83xmSw+mmG7JLwwNAQ==}
-    dependencies:
-      '@babel/core': 7.24.7
-      '@babel/types': 7.24.7
-      essor-shared: 0.0.6-beta.13
-    transitivePeerDependencies:
-      - supports-color
-    dev: true
-
   /babel-plugin-essor@0.0.6-beta.15:
     resolution: {integrity: sha512-nPFybvPJ1bi8DRp/5O3lSO1KFeL0kjQKvK9uWTeSDvDtSrOm2fbiq4+/3Gq4WyGvesSDVvcpKCSm98hDpEUOXg==}
     dependencies:
@@ -1776,11 +1752,11 @@ packages:
       balanced-match: 1.0.2
     dev: true
 
-  /braces@3.0.2:
-    resolution: {integrity: sha512-b8um+L1RzM3WDSzvhm6gIz1yfTbBt6YTlcEKAvsmqCZZFw46z626lVj9j1yEPW33H5H+lBQpZMP1k8l+78Ha0A==}
+  /braces@3.0.3:
+    resolution: {integrity: sha512-yQbXgO/OSZVD2IsiLlro+7Hf6Q18EJrKSEsdoMzKePKXct3gvD8oLcOQdIzGupr5Fj+EDe8gO/lxc1BzfMpxvA==}
     engines: {node: '>=8'}
     dependencies:
-      fill-range: 7.0.1
+      fill-range: 7.1.1
     dev: true
 
   /browserslist@4.23.0:
@@ -1890,7 +1866,7 @@ packages:
     engines: {node: '>= 8.10.0'}
     dependencies:
       anymatch: 3.1.3
-      braces: 3.0.2
+      braces: 3.0.3
       glob-parent: 5.1.2
       is-binary-path: 2.1.0
       is-glob: 4.0.3
@@ -2478,7 +2454,7 @@ packages:
       semver: 7.6.0
     dev: true
 
-  /eslint-plugin-prettier@5.1.3(eslint-config-prettier@9.1.0)(eslint@9.5.0)(prettier@3.2.5):
+  /eslint-plugin-prettier@5.1.3(eslint-config-prettier@9.1.0)(eslint@9.5.0)(prettier@3.3.2):
     resolution: {integrity: sha512-C9GCVAs4Eq7ZC/XFQHITLiHJxQngdtraXaM+LoUFoFp/lHNl2Zn8f3WQbe9HvTBBQ9YnKFB0/2Ajdqwo5D1EAw==}
     engines: {node: ^14.18.0 || >=16.0.0}
     peerDependencies:
@@ -2494,7 +2470,7 @@ packages:
     dependencies:
       eslint: 9.5.0
       eslint-config-prettier: 9.1.0(eslint@9.5.0)
-      prettier: 3.2.5
+      prettier: 3.3.2
       prettier-linter-helpers: 1.0.0
       synckit: 0.8.8
     dev: true
@@ -2778,8 +2754,8 @@ packages:
     resolution: {integrity: sha512-oruZaFkjorTpF32kDSI5/75ViwGeZginGGy2NoOSg3Q9bnwlnmDm4HLnkl0RE3n+njDXR037aY1+x58Z/zFdwQ==}
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
     dependencies:
-      acorn: 8.11.3
-      acorn-jsx: 5.3.2(acorn@8.11.3)
+      acorn: 8.12.0
+      acorn-jsx: 5.3.2(acorn@8.12.0)
       eslint-visitor-keys: 3.4.3
     dev: true
 
@@ -2795,10 +2771,6 @@ packages:
     engines: {node: '>=4.0'}
     dependencies:
       estraverse: 5.3.0
-    dev: true
-
-  /essor-shared@0.0.6-beta.13:
-    resolution: {integrity: sha512-sG9xnnMLeRM1ME3diOffczTGx8zoaoLnScHySO5gI3d90ihgQR9lO11u2404VSubT/MrKngBTRsRhWYOtJlEaw==}
     dev: true
 
   /essor-shared@0.0.6-beta.15:
@@ -2905,8 +2877,8 @@ packages:
       flat-cache: 4.0.1
     dev: true
 
-  /fill-range@7.0.1:
-    resolution: {integrity: sha512-qOo9F+dMUmC2Lcb4BbVvnKJxTPjCm+RRpe4gDuGrzkL7mEVl/djYSu2OdQ2Pa302N4oqkSg9ir6jaLWJ2USVpQ==}
+  /fill-range@7.1.1:
+    resolution: {integrity: sha512-YsGpe3WHLK8ZYi4tWDg2Jy3ebRz2rXowDxnld4bkQB00cc/1Zw9AWnC0i9ztDJitivtQvaI9KaLyKrc+hBW0yg==}
     engines: {node: '>=8'}
     dependencies:
       to-regex-range: 5.0.1
@@ -3521,7 +3493,7 @@ packages:
     resolution: {integrity: sha512-WYDyuc/uFcGp6YtM2H0uKmUwieOuzeE/5YocFJLnLfclZ4inf3mRn8ZVy1s7Hxji7Jxm6Ss8gqpexD/GlKoGgg==}
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
     dependencies:
-      acorn: 8.11.3
+      acorn: 8.12.0
       eslint-visitor-keys: 3.4.3
       espree: 9.6.1
       semver: 7.6.0
@@ -3684,7 +3656,7 @@ packages:
     resolution: {integrity: sha512-DMy+ERcEW2q8Z2Po+WNXuw3c5YaUSFjAO5GsJqfEl7UjvtIuFKO6ZrKvcItdy98dwFI2N1tg3zNIdKaQT+aNdA==}
     engines: {node: '>=8.6'}
     dependencies:
-      braces: 3.0.2
+      braces: 3.0.3
       picomatch: 2.3.1
     dev: true
 
@@ -3719,7 +3691,7 @@ packages:
   /mlly@1.7.0:
     resolution: {integrity: sha512-U9SDaXGEREBYQgfejV97coK0UL1r+qnF2SyO9A3qcI8MzKnsIFKHNVEkrDyNncQTKQQumsasmeq84eNMdBfsNQ==}
     dependencies:
-      acorn: 8.11.3
+      acorn: 8.12.0
       pathe: 1.1.2
       pkg-types: 1.1.0
       ufo: 1.5.3
@@ -4094,8 +4066,8 @@ packages:
       fast-diff: 1.3.0
     dev: true
 
-  /prettier@3.2.5:
-    resolution: {integrity: sha512-3/GWa9aOC0YeD7LUfvOG2NiDyhOWRvt1k+rcKhOuYnMY24iiCphgneUfJDyFXd6rZCAnuLBv6UeAULtrhT/F4A==}
+  /prettier@3.3.2:
+    resolution: {integrity: sha512-rAVeHYMcv8ATV5d508CFdn+8/pHPpXeIid1DdrPwXnaAdH7cqjVbpJaT5eq4yRAFU/lsbwYwSF/n5iNrdJHPQA==}
     engines: {node: '>=14'}
     hasBin: true
     dev: true
@@ -4759,8 +4731,8 @@ packages:
       - supports-color
     dev: true
 
-  /unplugin-essor@0.0.6-beta.13(vite@5.3.1):
-    resolution: {integrity: sha512-o2tnXcbMMgD3NglpLDqebiF5De4R6NI/zSDUL+B5TwnBc86sdTlZyhmco2AubG44LUgADFnYPiG3OYUTqTyfyw==}
+  /unplugin-essor@0.0.6-beta.15(vite@5.3.1):
+    resolution: {integrity: sha512-SUco6DinHOzSEAV3qZvQ2lno5Jz0PlbBhw1E7V/u0mkyzW4BvPTkAqSOauT4m9nP5uhrBQVgwkn55rFL2L0Ivw==}
     peerDependencies:
       esbuild: '*'
       rollup: ^4
@@ -4777,7 +4749,7 @@ packages:
         optional: true
     dependencies:
       '@babel/core': 7.24.7
-      babel-plugin-essor: 0.0.6-beta.13
+      babel-plugin-essor: 0.0.6-beta.15
       unplugin: 1.10.1
       vite: 5.3.1(@types/node@20.14.6)
     transitivePeerDependencies:
@@ -4788,10 +4760,10 @@ packages:
     resolution: {integrity: sha512-d6Mhq8RJeGA8UfKCu54Um4lFA0eSaRa3XxdAJg8tIdxbu1ubW0hBCZUL7yI2uGyYCRndvbK8FLHzqy2XKfeMsg==}
     engines: {node: '>=14.0.0'}
     dependencies:
-      acorn: 8.11.3
+      acorn: 8.12.0
       chokidar: 3.6.0
       webpack-sources: 3.2.3
-      webpack-virtual-modules: 0.6.1
+      webpack-virtual-modules: 0.6.2
     dev: true
 
   /update-browserslist-db@1.0.13(browserslist@4.23.0):
@@ -4989,8 +4961,8 @@ packages:
     engines: {node: '>=10.13.0'}
     dev: true
 
-  /webpack-virtual-modules@0.6.1:
-    resolution: {integrity: sha512-poXpCylU7ExuvZK8z+On3kX+S8o/2dQ/SVYueKA0D4WEMXROXgY8Ez50/bQEUmvoSMMrWcrJqCHuhAbsiwg7Dg==}
+  /webpack-virtual-modules@0.6.2:
+    resolution: {integrity: sha512-66/V2i5hQanC51vBQKPH4aI8NMAcBW59FVBs+rC7eGHupMyfn34q7rZIE+ETlJ+XTevqfUhVVBgSUNSW2flEUQ==}
     dev: true
 
   /whatwg-mimetype@3.0.0:
