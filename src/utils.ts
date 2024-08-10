@@ -32,7 +32,7 @@ export function atou(base64: string): string {
   // https://base64.guru/developers/javascript/examples/unicode-strings
   return decodeURIComponent(escape(binary));
 }
-export const dark = useSignal(false);
+export const dark = useSignal(true);
 
 export function useDark() {
   dark.value = localStorage.getItem('color-schema') === 'dark';

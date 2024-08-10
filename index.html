@@ -12,13 +12,8 @@
   <div id="app"></div>
   <script>
     (function () {
-      const prefersDark =
-        window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-      const setting = localStorage.getItem('color-schema') || 'auto';
-      if (setting === 'dark' || (prefersDark && setting !== 'light')) {
-        document.documentElement.classList.toggle('dark', true);
-        localStorage.setItem('color-schema', 'dark');
-      }
+      document.documentElement.classList.toggle('dark', true);
+      localStorage.setItem('color-schema', 'dark');
     })();
   </script>
   <script type="module" src="/src/main.tsx"></script>
