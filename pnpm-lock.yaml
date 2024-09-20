@@ -50,14 +50,14 @@ devDependencies:
     specifier: ^4.17.21
     version: 4.17.21
   monaco-editor:
-    specifier: ^0.50.0
-    version: 0.50.0
+    specifier: ^0.52.0
+    version: 0.52.0
   typescript:
     specifier: ^5.5.4
     version: 5.5.4
   unocss:
     specifier: ^0.61.9
-    version: 0.61.9(postcss@8.4.38)(vite@5.4.0)
+    version: 0.61.9(postcss@8.4.41)(vite@5.4.0)
   unplugin-essor:
     specifier: ^0.0.8
     version: 0.0.8(esbuild@0.21.5)(vite@5.4.0)
@@ -1687,7 +1687,7 @@ packages:
       sirv: 2.0.4
     dev: true
 
-  /@unocss/postcss@0.61.9(postcss@8.4.38):
+  /@unocss/postcss@0.61.9(postcss@8.4.41):
     resolution: {integrity: sha512-HuFE/TUH6tt5f/AwiKNhQ/FO/lvFeW0JHPkx9SCURcKKoD3rpJUbhTqVv7c0zlCVQnRFX0hxpimoetp5Dh8qdA==}
     engines: {node: '>=14'}
     peerDependencies:
@@ -1699,7 +1699,7 @@ packages:
       css-tree: 2.3.1
       fast-glob: 3.3.2
       magic-string: 0.30.11
-      postcss: 8.4.38
+      postcss: 8.4.41
     transitivePeerDependencies:
       - supports-color
     dev: true
@@ -4122,8 +4122,8 @@ packages:
       ufo: 1.5.3
     dev: true
 
-  /monaco-editor@0.50.0:
-    resolution: {integrity: sha512-8CclLCmrRRh+sul7C08BmPBP3P8wVWfBHomsTcndxg5NRCEPfu/mc2AGU8k37ajjDVXcXFc12ORAMUkmk+lkFA==}
+  /monaco-editor@0.52.0:
+    resolution: {integrity: sha512-OeWhNpABLCeTqubfqLMXGsqf6OmPU6pHM85kF3dhy6kq5hnhuVS1p3VrEW/XhWHc71P2tHyS5JFySD8mgs1crw==}
     dev: true
 
   /mrmime@2.0.0:
@@ -5183,7 +5183,7 @@ packages:
     engines: {node: '>= 10.0.0'}
     dev: true
 
-  /unocss@0.61.9(postcss@8.4.38)(vite@5.4.0):
+  /unocss@0.61.9(postcss@8.4.41)(vite@5.4.0):
     resolution: {integrity: sha512-D7nEObT1lhCUwXU5MoQ2Msh5S5g1EHVVSqDNM2ODs6dqWSboDCsRTPZQiyQmV9vCobrjYcvAFno9ZAgO7pvurw==}
     engines: {node: '>=14'}
     peerDependencies:
@@ -5199,7 +5199,7 @@ packages:
       '@unocss/cli': 0.61.9
       '@unocss/core': 0.61.9
       '@unocss/extractor-arbitrary-variants': 0.61.9
-      '@unocss/postcss': 0.61.9(postcss@8.4.38)
+      '@unocss/postcss': 0.61.9(postcss@8.4.41)
       '@unocss/preset-attributify': 0.61.9
       '@unocss/preset-icons': 0.61.9
       '@unocss/preset-mini': 0.61.9
