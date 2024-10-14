@@ -1,4 +1,4 @@
-import { essorVersion } from './utils';
+import { essorVersion } from './index';
 
 export function getImportMapConfig() {
   return {

@@ -1,10 +1,10 @@
 import { transform } from '@babel/standalone';
 import BabelPluginEssor from 'babel-plugin-essor';
-import { atou, utoa } from './utils';
+import { atou, compileMode, utoa } from '../utils';
 
 function babelTransform(filename: string, code: string) {
   const transformedCode = transform(code, {
-    plugins: [BabelPluginEssor],
+    plugins: [[BabelPluginEssor, { ssg: compileMode.value === 'server' }]],
     presets: ['typescript'],
     filename: `${filename}.tsx`,
   }).code;
@@ -16,9 +16,7 @@ self.addEventListener(
   message => {
     if (message.data.type === 'editValueChange') {
       const data = message.data.value;
-
       setHashCode(data);
-
       self.postMessage({
         type: 'compile',
         value: babelTransform('test', data),

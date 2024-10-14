@@ -1,13 +1,14 @@
-import { onDestroy, onMount, useEffect, useSignal } from 'essor';
-import { getEditor } from './monaco';
+import { onDestroy, onMount, useRef, useSignal, useWatch } from 'essor';
+import { getEditor } from '../utils/monaco';
+import srcdoc from '../srcdoc.html?raw';
+import { getImportMapConfig } from '../config';
+import { essorVersion, setDark } from '../utils';
 import { PreviewProxy } from './PreviewProxy';
-import srcdoc from './srcdoc.html?raw';
-import { importMapCOnfig } from './config';
-import { setDark } from './utils';
 import type { editor } from 'monaco-editor';
+
 export function Preview() {
-  const ref = useSignal<HTMLDivElement | null>(null);
-  const container = useSignal<HTMLDivElement | null>(null);
+  const ref = useRef<HTMLDivElement | null>();
+  const containerRef = useRef<HTMLDivElement | null>();
   let editor: editor.IStandaloneCodeEditor;
   let sandbox: HTMLIFrameElement;
   let proxy: PreviewProxy;
@@ -15,8 +16,9 @@ export function Preview() {
   const runtimeError = useSignal('');
 
   function createSandbox() {
+    console.log('Creating sandbox...');
     if (sandbox) {
-      // clear prev sandbox
+      console.log('Destroying previous sandbox...');
       proxy.destroy();
       sandbox.remove();
     }
@@ -36,7 +38,7 @@ export function Preview() {
     );
 
     const importMap = {
-      imports: importMapCOnfig,
+      imports: getImportMapConfig(),
       scopes: {},
     };
 
@@ -46,7 +48,7 @@ export function Preview() {
       .replace(/<!-- PREVIEW-OPTIONS-HEAD-HTML -->/, '')
       .replace(/<!--PREVIEW-OPTIONS-PLACEHOLDER-HTML-->/, '');
     sandbox.srcdoc = sandboxSrc;
-    container.value!.append(sandbox);
+    containerRef.value!.append(sandbox);
 
     proxy = new PreviewProxy(sandbox, {
       on_error: (event: any) => {
@@ -89,6 +91,7 @@ export function Preview() {
     sandbox.addEventListener(
       'load',
       () => {
+        console.log('Sandbox loaded, handling links...');
         proxy.handle_links();
       },
       { once: true },
@@ -96,6 +99,7 @@ export function Preview() {
   }
 
   async function updatePreview(code: string) {
+    console.log('Updating preview with code:', code);
     const codeToEval = [
       `import { h as _h$2 } from "essor";
         ${code}
@@ -106,6 +110,7 @@ export function Preview() {
   }
 
   onMount(() => {
+    console.log('Preview component mounted.');
     createSandbox();
     editor = getEditor(ref.value!);
 
@@ -115,7 +120,7 @@ export function Preview() {
       message => {
         if (message.data.type === 'compile') {
           const data = message.data.value;
-          console.log(message);
+          console.log('Received compile message:', message);
           editor.setValue(data);
           updatePreview(data);
         }
@@ -124,18 +129,21 @@ export function Preview() {
     );
   });
 
-  useEffect(() => {
+  useWatch(essorVersion, () => {
+    console.log('Essor version changed, recreating sandbox...');
     setDark();
+    createSandbox(); // Recreate sandbox on essorVersion change
   });
 
   onDestroy(() => {
+    console.log('Preview component destroyed.');
     editor.dispose();
   });
 
   return (
     <div class="h-full w-full">
       <div ref={ref} class="h-50% of-hidden"></div>
-      <div ref={container} class="iframe-container mr-14px h-50% b-t-1 b-base"></div>
+      <div ref={containerRef} class="iframe-container mr-14px h-50% b-t-1 b-base"></div>
     </div>
   );
 }

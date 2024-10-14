@@ -1,7 +1,7 @@
 import * as monaco from 'monaco-editor';
 import { languages } from 'monaco-editor';
-import EssorType from '../node_modules/essor/dist/essor.d.ts?raw';
-import { dark } from './utils';
+import EssorType from '../../node_modules/essor/dist/essor.d.ts?raw';
+import { dark } from '../utils';
 
 const customModel = monaco.editor.createModel(
   EssorType,
