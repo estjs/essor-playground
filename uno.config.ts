@@ -1,4 +1,4 @@
-import { defineConfig, presetIcons, presetUno, presetWebFonts } from 'unocss';
+import { defineConfig, presetIcons, presetUno } from 'unocss';
 export default defineConfig({
   theme: {},
   shortcuts: {
@@ -10,16 +10,9 @@ export default defineConfig({
   },
   presets: [
     presetUno(),
-
     presetIcons({
       scale: 1.6,
       warn: true,
-    }),
-    presetWebFonts({
-      fonts: {
-        serif: 'DM Serif Display',
-        mono: 'DM Mono',
-      },
     }),
   ],
 });

@@ -2,17 +2,24 @@
 
 <div align="center">
 
-**🎮 Online Demo and Experimental Environment**
+**🎮 在线演示和实验环境**
 
 [![Deploy to Netlify](https://img.shields.io/badge/Deploy-Netlify-blue?logo=netlify)](https://app.netlify.com/start/deploy?repository=https://github.com/estjs/essor)
 [![GitHub license](https://img.shields.io/github/license/estjs/essor.svg)](https://github.com/estjs/essor/blob/main/LICENSE)
 
-English | [简体中文](./README_CN.md)
+[English](./README.md) | 简体中文
 
 </div>
 
 
+### 在线访问
 
-### Online Access
+访问 [Essor Playground](https://playground.estjs.dev) 开始体验。
 
-Visit [Essor Playground](https://playground.estjs.dev) to start experimenting.
+
+## 📄 许可证
+
+[MIT License](../LICENSE)
+
+
+

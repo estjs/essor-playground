@@ -1,7 +1,12 @@
-import { essorVersion } from './index';
+const isDev = import.meta.env.DEV;
 
-export function getImportMapConfig() {
+export function getImportMapConfig(version: string) {
+  const isLocal = version === 'latest' || version === 'local';
   return {
-    essor: `https://cdn.jsdelivr.net/npm/essor@${essorVersion.value}/dist/essor.esm.js`,
+    // Point to local files directly when running in development
+    essor:
+      isLocal && isDev
+        ? new URL('../../../essor/packages/core/dist/essor.esm.js', import.meta.url).href
+        : `https://cdn.jsdelivr.net/npm/essor@${version === 'latest' ? 'latest' : version}/dist/essor.esm.js`,
   };
 }

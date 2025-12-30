@@ -2,40 +2,36 @@ import 'virtual:uno.css';
 import '@unocss/reset/tailwind.css';
 import './style.css';
 
-import editorWorker from 'monaco-editor/esm/vs/editor/editor.worker?worker';
-import tsWorker from 'monaco-editor/esm/vs/language/typescript/ts.worker?worker';
-import cssWorker from 'monaco-editor/esm/vs/language/css/css.worker?worker';
-import jsonWorker from 'monaco-editor/esm/vs/language/json/json.worker?worker';
+import { createApp, onMount, watch } from 'essor';
 import { Bar } from './components/Bar';
-import { Preview } from './components/Preview';
 import { Edit } from './components/Edit';
-
-window.MonacoEnvironment = {
-  getWorker(_moduleId: unknown, label: string) {
-    switch (label) {
-      case 'css':
-        return new cssWorker();
-      case 'json':
-        return new jsonWorker();
-      case 'typescript':
-      case 'javascript':
-        return new tsWorker();
-      default:
-        return new editorWorker();
-    }
-  },
-};
+import { Preview } from './components/Preview';
+import { dark, setDark } from './utils';
 
 function App() {
+  // Initialize dark mode on mount
+  onMount(() => {
+    setDark();
+  });
+
+  // Watch for dark mode changes
+  watch(dark, () => {
+    setDark();
+  });
+
   return (
-    <div class="h-100vh w-100vw of-hidden">
+    <div class="h-100vh w-100vw flex flex-col of-hidden">
       <Bar />
-      <div class="grid grid-cols-2 h-[calc(100%-50px)] w-full of-hidden">
-        <Edit />
-        <Preview />
+      <div class="w-full flex flex-1 of-hidden">
+        <div class="h-full w-1/2">
+          <Edit />
+        </div>
+        <div class="h-full w-1/2">
+          <Preview />
+        </div>
       </div>
     </div>
   );
 }
 
-(<App />).mount(document.querySelector('#app')!);
+createApp(App, '#app');

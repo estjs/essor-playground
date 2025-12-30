@@ -1,24 +1,22 @@
-import { onDestroy, onMount, useRef, useSignal, useWatch } from 'essor';
-import { getEditor } from '../utils/monaco';
+import { effect, onDestroy, onMount, ref, signal } from 'essor';
+import semver from 'semver';
+import { getEditor } from '@/utils/monaco';
+import { essorVersion } from '@/utils';
 import srcdoc from '../srcdoc.html?raw';
-import { getImportMapConfig } from '../config';
-import { essorVersion, setDark } from '../utils';
+import { getImportMapConfig } from '../utils/config';
 import { PreviewProxy } from './PreviewProxy';
-import type { editor } from 'monaco-editor';
-
 export function Preview() {
-  const ref = useRef<HTMLDivElement | null>();
-  const containerRef = useRef<HTMLDivElement | null>();
-  let editor: editor.IStandaloneCodeEditor;
-  let sandbox: HTMLIFrameElement;
-  let proxy: PreviewProxy;
+  const compiledRef = ref();
+  const containerRef = ref();
+  let editor;
+  let sandbox;
+  let proxy;
 
-  const runtimeError = useSignal('');
+  const runtimeError = signal('');
+  const isLoading = signal(false);
 
   function createSandbox() {
-    console.log('Creating sandbox...');
     if (sandbox) {
-      console.log('Destroying previous sandbox...');
       proxy.destroy();
       sandbox.remove();
     }
@@ -38,7 +36,7 @@ export function Preview() {
     );
 
     const importMap = {
-      imports: getImportMapConfig(),
+      imports: getImportMapConfig(essorVersion.value),
       scopes: {},
     };
 
@@ -51,7 +49,7 @@ export function Preview() {
     containerRef.value!.append(sandbox);
 
     proxy = new PreviewProxy(sandbox, {
-      on_error: (event: any) => {
+      on_error: event => {
         const msg = event.value instanceof Error ? event.value.message : event.value;
         if (
           msg.includes('Failed to resolve module specifier') ||
@@ -65,14 +63,14 @@ export function Preview() {
           runtimeError.value = event.value;
         }
       },
-      on_unhandled_rejection: (event: any) => {
+      on_unhandled_rejection: event => {
         let error = event.value;
         if (typeof error === 'string') {
           error = { message: error };
         }
         runtimeError.value = `Uncaught (in promise): ${error.message}`;
       },
-      on_console: (log: any) => {
+      on_console: log => {
         if (log.duplicate) {
           return;
         }
@@ -82,8 +80,6 @@ export function Preview() {
           } else {
             runtimeError.value = log.args[0];
           }
-        } else if (log.level === 'warn' && log.args[0].toString().includes('[Essor warn]')) {
-          // TODO:
         }
       },
     });
@@ -91,7 +87,6 @@ export function Preview() {
     sandbox.addEventListener(
       'load',
       () => {
-        console.log('Sandbox loaded, handling links...');
         proxy.handle_links();
       },
       { once: true },
@@ -99,51 +94,80 @@ export function Preview() {
   }
 
   async function updatePreview(code: string) {
-    console.log('Updating preview with code:', code);
-    const codeToEval = [
-      `import { h as _h$2 } from "essor";
+    try {
+      isLoading.value = true;
+      runtimeError.value = '';
+
+      // 0.15 later version use old run code
+      const isOldVersion = semver.lt(essorVersion.value, '0.15.0');
+      const codeToEvalOld = [
+        `import { h as _h$2 } from "essor";
         ${code}
       document.querySelector('#app').innerHTML = '';
       _h$2(App, {}).mount(document.querySelector('#app'));`,
-    ];
-    await proxy.eval(codeToEval);
+      ];
+      const codeToEval = [
+        `import { createApp as createApp$1 } from "essor";
+          ${code}
+        document.querySelector('#app').innerHTML = '';
+        createApp$1(App, '#app');
+        `,
+      ];
+      await proxy.eval(isOldVersion ? codeToEvalOld : codeToEval);
+    } catch (error) {
+      runtimeError.value = error instanceof Error ? error.message : String(error);
+    } finally {
+      isLoading.value = false;
+    }
   }
 
   onMount(() => {
-    console.log('Preview component mounted.');
     createSandbox();
-    editor = getEditor(ref.value!);
+    editor = getEditor(compiledRef.value!);
 
-    setDark();
     self.addEventListener(
       'message',
       message => {
         if (message.data.type === 'compile') {
           const data = message.data.value;
-          console.log('Received compile message:', message);
-          editor.setValue(data);
           updatePreview(data);
+          editor.setValue(data);
+          console.log('Received compile message:', message);
         }
       },
       false,
     );
   });
 
-  useWatch(essorVersion, () => {
-    console.log('Essor version changed, recreating sandbox...');
-    setDark();
-    createSandbox(); // Recreate sandbox on essorVersion change
+  // Re-create sandbox when version changes
+  effect(() => {
+    // Access essorVersion.value to track dependency
+    const v = essorVersion.value;
+    if (containerRef.value && editor) {
+      createSandbox();
+    }
   });
 
   onDestroy(() => {
-    console.log('Preview component destroyed.');
+    proxy.destroy();
+    sandbox.remove();
     editor.dispose();
   });
 
   return (
-    <div class="h-full w-full">
-      <div ref={ref} class="h-50% of-hidden"></div>
+    <div class="relative h-full w-full">
+      {isLoading.value && (
+        <div class="absolute left-0 top-0 z-50 h-full w-full flex items-center justify-center bg-black/10">
+          <div class="text-lg">Loading...</div>
+        </div>
+      )}
+      <div ref={compiledRef} class="h-50%"></div>
       <div ref={containerRef} class="iframe-container mr-14px h-50% b-t-1 b-base"></div>
+      {runtimeError.value && (
+        <div class="absolute bottom-0 left-0 z-40 max-h-100px w-full of-auto bg-red-50 p-4 text-sm text-red-600">
+          <strong>Error:</strong> {runtimeError.value}
+        </div>
+      )}
     </div>
   );
 }

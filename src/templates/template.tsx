@@ -1,4 +1,4 @@
-function App() {
+export function App() {
   const $value = 'hello world';
   return (
     <div>

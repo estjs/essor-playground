@@ -1,38 +1,56 @@
 import * as monaco from 'monaco-editor';
 import { languages } from 'monaco-editor';
-import EssorType from '../../node_modules/essor/dist/essor.d.ts?raw';
-import { dark } from '../utils';
+import EssorType from '../../node_modules/essor/types/jsx.d.ts?raw';
+
+import editorWorker from 'monaco-editor/esm/vs/editor/editor.worker?worker';
+import tsWorker from 'monaco-editor/esm/vs/language/typescript/ts.worker?worker';
+import cssWorker from 'monaco-editor/esm/vs/language/css/css.worker?worker';
+import jsonWorker from 'monaco-editor/esm/vs/language/json/json.worker?worker';
+
+self.MonacoEnvironment = {
+  getWorker(_moduleId, label) {
+    switch (label) {
+      case 'css':
+        return new cssWorker();
+      case 'json':
+        return new jsonWorker();
+      case 'typescript':
+      case 'javascript':
+        return new tsWorker();
+      default:
+        return new editorWorker();
+    }
+  },
+};
 
 const customModel = monaco.editor.createModel(
   EssorType,
   'typescript',
-  monaco.Uri.parse(`file:///node_modules/essor/dist/essor.d.ts`),
+  monaco.Uri.parse(`file:///node_modules/essor/types/jsx.d.ts`),
 );
 
-// 设置TypeScript编译器选项
+// Configure the TypeScript compiler options
 const compilerOptions: languages.typescript.CompilerOptions = {
   strict: true,
   target: languages.typescript.ScriptTarget.ESNext,
   module: languages.typescript.ModuleKind.ESNext,
-  moduleResolution: languages.typescript.ModuleResolutionKind.NodeJs,
   jsx: monaco.languages.typescript.JsxEmit.React,
   jsxImportSource: 'preset',
   allowNonTsExtensions: true,
   reactNamespace: 'essor',
   jsxFactory: 'h',
   allowJs: true,
-  typeRoots: ['node_modules/@types'],
 };
 
-// 设置编译器选项
+// Apply the compiler options
 languages.typescript.typescriptDefaults.setCompilerOptions(compilerOptions);
 
 monaco.languages.typescript.typescriptDefaults.setDiagnosticsOptions({
   noSemanticValidation: false,
-  noSyntaxValidation: false,
+  noSyntaxValidation: true,
 });
 
-// 添加额外的类型定义文件
+// Add additional type declaration files
 languages.typescript.typescriptDefaults.addExtraLib(
   `declare module 'essor' {
     ${customModel.getValue()}
@@ -43,7 +61,6 @@ languages.typescript.typescriptDefaults.addExtraLib(
 monaco.languages.typescript.typescriptDefaults.addExtraLib(
   `
   declare namespace  JSX {
-
 }
   `,
   'jsx.d.ts',
@@ -55,7 +72,7 @@ function getEditor(ref: HTMLDivElement, props: any = {}) {
     fontSize: 14,
     tabSize: 2,
     fontWeight: '500',
-    theme: dark.value ? 'vs-dark' : 'vs-light',
+    theme: 'vs-light',
     language: 'typescript',
     minimap: {
       enabled: false,
@@ -64,9 +81,13 @@ function getEditor(ref: HTMLDivElement, props: any = {}) {
       enabled: false,
     },
     fixedOverflowWidgets: true,
+    scrollbar: {
+      vertical: 'auto',
+      horizontal: 'auto',
+    },
+    automaticLayout: true,
     ...props,
   });
-
   return editorInstance;
 }
 

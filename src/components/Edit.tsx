@@ -1,41 +1,80 @@
-import { onDestroy, onMount, useEffect, useRef } from 'essor';
+import { onDestroy, onMount, ref, watch } from 'essor';
 import { getEditor } from '../utils/monaco';
 import template from '../templates/template?raw';
-import { loadHashCode } from '../services/compile';
-import { setDark } from '../utils';
-import type { editor } from 'monaco-editor';
+import { loadHashCode, setHashCode } from '../services/compile';
+import { compileMode, essorVersion } from '../utils';
+import CompileWorker from '../services/compile.worker?worker';
+
 export function Edit() {
-  const ref = useRef<HTMLDivElement | null>();
-  let editor: editor.IStandaloneCodeEditor;
+  const editRef = ref();
+  let editor;
+  let compileWorker: Worker;
 
   const postMsg = () => {
-    self.postMessage({
-      type: 'editValueChange',
-      value: editor.getValue(),
+    if (!editor || !compileWorker) return;
+    const code = editor.getValue();
+    setHashCode(code);
+    compileWorker.postMessage({
+      type: 'compile',
+      code,
+      ssg: compileMode.value === 'server',
+      version: essorVersion.value,
     });
   };
 
-  onMount(async () => {
-    editor = await getEditor(ref.value!);
-    setDark();
+  onMount(() => {
+    if (!editRef.value) return;
+
+    // Initialize compile worker
+    compileWorker = new CompileWorker();
+
+    // Set up worker message handler
+    compileWorker.addEventListener('message', e => {
+      if (e.data.type === 'compile-success') {
+        self.postMessage({
+          type: 'compile',
+          value: e.data.value,
+        });
+      } else if (e.data.type === 'compile-error') {
+        self.postMessage({
+          type: 'compile-error',
+          error: e.data.error,
+        });
+      }
+    });
+
+    editor = getEditor(editRef.value);
     const code = loadHashCode();
     editor.setValue(code || template);
     postMsg();
+
     editor.onDidChangeModelContent(() => {
       postMsg();
     });
-  });
 
-  useEffect(() => {
-    setDark();
-    if (editor) {
-      postMsg();
-    }
+    const resizeObserver = new ResizeObserver(() => {
+      editor.layout();
+    });
+
+    resizeObserver.observe(editRef.value);
+
+    // Watch for compile mode and version changes to trigger recompilation
+    watch(compileMode, postMsg);
+    watch(essorVersion, postMsg);
+
+    onDestroy(() => {
+      resizeObserver.disconnect();
+    });
   });
 
   onDestroy(() => {
-    editor.dispose();
+    if (compileWorker) {
+      compileWorker.terminate();
+    }
+    if (editor) {
+      editor.dispose();
+    }
   });
 
-  return <div ref={ref} class="h-full"></div>;
+  return <div ref={editRef} class="h-full w-full"></div>;
 }

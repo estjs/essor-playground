@@ -1,4 +1,4 @@
-import { useSignal } from 'essor';
+import { signal } from 'essor';
 import { strFromU8, strToU8, unzlibSync, zlibSync } from 'fflate';
 import * as monaco from 'monaco-editor';
 
@@ -32,12 +32,11 @@ export function atou(base64: string): string {
 }
 
 // Dark mode signal and related functions
-export const dark = useSignal(localStorage.getItem('color-schema') === 'dark');
+export const dark = signal(localStorage.getItem('color-schema') === 'dark');
 
 export function toggleDark() {
   dark.value = !dark.value;
   localStorage.setItem('color-schema', dark.value ? 'dark' : 'light');
-  document.documentElement.classList.toggle('dark', dark.value);
 }
 
 export function setDark() {
@@ -46,11 +45,11 @@ export function setDark() {
 }
 
 // Essor version and compile mode signals
-export const essorVersion = useSignal('latest');
-export const compileMode = useSignal<'client' | 'server'>('client');
+export const essorVersion = signal('latest');
+export const compileMode = signal<'client' | 'server'>('client');
 
 export function setEssorVersion(version: string) {
-  selectedVersion.value = version;
+  essorVersion.value = version;
 }
 
 export function setCompileMode(mode: 'client' | 'server') {
@@ -61,21 +60,22 @@ export function setCompileMode(mode: 'client' | 'server') {
 export function shareUrl() {
   const url = window.location.href;
   navigator.clipboard.writeText(url).then(() => {
+    // eslint-disable-next-line no-alert
     alert('URL copied to clipboard!');
   });
 }
 
 // Fetch available Essor versions from GitHub
-export const essorVersions = useSignal<string[]>([]);
-export const selectedVersion = useSignal();
+export const essorVersions = signal<string[]>([]);
 
 export async function fetchEssorVersions() {
   try {
     const response = await fetch('https://api.github.com/repos/estjs/essor/tags');
     const data = await response.json();
     const versions = data.map((tag: { name: string }) => tag.name);
-    essorVersions.value = versions;
-    selectedVersion.value = versions[0];
+
+    essorVersions.value = [...versions];
+    essorVersion.value = versions[0];
   } catch (error) {
     console.error('Failed to fetch essor versions:', error);
   }
