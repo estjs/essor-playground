@@ -21,7 +21,7 @@
     "@estjs/eslint-config": "^2.1.5",
     "@iconify-json/carbon": "^1.2.13",
     "@types/babel__standalone": "^7.1.9",
-    "@types/node": "^24.6.2",
+    "@types/node": "^25.0.0",
     "babel-plugin-essor": "^0.0.15-beta.5",
     "eslint": "^9.37.0",
     "fflate": "^0.8.2",
