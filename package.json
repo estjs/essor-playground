@@ -34,6 +34,6 @@
     "unplugin-essor": "^0.0.15-beta.5",
     "vite": "^7.1.9",
     "vite-plugin-inspect": "^11.3.3",
-    "vitest": "^3.2.4"
+    "vitest": "^4.0.0"
   }
 }
