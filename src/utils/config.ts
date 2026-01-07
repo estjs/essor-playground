@@ -1,7 +1,7 @@
 const isDev = import.meta.env.DEV;
 
 export function getImportMapConfig(version: string) {
-  const isLocal = version === 'latest' || version === 'local';
+  const isLocal = version === 'local';
   return {
     // Point to local files directly when running in development
     essor:

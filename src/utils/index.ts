@@ -73,9 +73,9 @@ export async function fetchEssorVersions() {
     const response = await fetch('https://api.github.com/repos/estjs/essor/tags');
     const data = await response.json();
     const versions = data.map((tag: { name: string }) => tag.name);
-
-    essorVersions.value = [...versions];
-    essorVersion.value = versions[0];
+    const isDev = process.env.NODE_ENV === 'development';
+    essorVersions.value = [isDev && 'local', ...versions];
+    essorVersion.value = essorVersions.value[0];
   } catch (error) {
     console.error('Failed to fetch essor versions:', error);
   }

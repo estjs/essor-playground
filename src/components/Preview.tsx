@@ -98,8 +98,10 @@ export function Preview() {
       isLoading.value = true;
       runtimeError.value = '';
 
-      // 0.15 later version use old run code
-      const isOldVersion = semver.lt(essorVersion.value, '0.15.0');
+      // 0.14 later version use old run code
+      const isOldVersion =
+        essorVersion.value !== 'local' && semver.gt(essorVersion.value, '0.14.0');
+
       const codeToEvalOld = [
         `import { h as _h$2 } from "essor";
         ${code}

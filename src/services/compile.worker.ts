@@ -9,7 +9,7 @@ interface CompileMessage {
 }
 
 async function loadPlugin(version: string) {
-  if (version === 'latest' || version === 'local') {
+  if (version === 'local') {
     return LocalBabelPlugin;
   }
   try {
