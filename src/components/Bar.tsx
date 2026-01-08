@@ -1,11 +1,9 @@
 import { onMount } from 'essor';
 import {
-  compileMode,
   dark,
   essorVersion,
   essorVersions,
   fetchEssorVersions,
-  setCompileMode,
   setEssorVersion,
   shareUrl,
   toggleDark,
@@ -16,9 +14,9 @@ export function Bar() {
     fetchEssorVersions();
   });
 
-  function handleToggle() {
-    setCompileMode(compileMode.value === 'client' ? 'server' : 'client');
-  }
+  // function handleToggle() {
+  //   setCompileMode(compileMode.value === 'client' ? 'server' : 'client');
+  // }
 
   return (
     <div class="h-50px w-full flex items-center justify-between b-b-1 b-base px-4 transition-colors dark:bg-black">

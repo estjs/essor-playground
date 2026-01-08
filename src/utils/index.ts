@@ -1,6 +1,7 @@
 import { signal } from 'essor';
 import { strFromU8, strToU8, unzlibSync, zlibSync } from 'fflate';
 import * as monaco from 'monaco-editor';
+import { isDev } from './config';
 
 // Debounce function to limit the rate at which a function can fire
 export function debounce(fn: Function, n = 100) {
@@ -73,8 +74,8 @@ export async function fetchEssorVersions() {
     const response = await fetch('https://api.github.com/repos/estjs/essor/tags');
     const data = await response.json();
     const versions = data.map((tag: { name: string }) => tag.name);
-    const isDev = process.env.NODE_ENV === 'development';
-    essorVersions.value = [isDev && 'local', ...versions];
+    const allVersions = isDev ? ['local', ...versions] : versions;
+    essorVersions.value = allVersions;
     essorVersion.value = essorVersions.value[0];
   } catch (error) {
     console.error('Failed to fetch essor versions:', error);

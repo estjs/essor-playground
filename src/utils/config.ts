@@ -1,4 +1,4 @@
-const isDev = import.meta.env.DEV;
+export const isDev = import.meta.env.DEV;
 
 export function getImportMapConfig(version: string) {
   const isLocal = version === 'local';

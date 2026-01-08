@@ -1,11 +1,11 @@
 import * as monaco from 'monaco-editor';
 import { languages } from 'monaco-editor';
-import EssorType from '../../node_modules/essor/types/jsx.d.ts?raw';
 
 import editorWorker from 'monaco-editor/esm/vs/editor/editor.worker?worker';
 import tsWorker from 'monaco-editor/esm/vs/language/typescript/ts.worker?worker';
 import cssWorker from 'monaco-editor/esm/vs/language/css/css.worker?worker';
 import jsonWorker from 'monaco-editor/esm/vs/language/json/json.worker?worker';
+import EssorType from '../../node_modules/essor/types/jsx.d.ts?raw';
 
 self.MonacoEnvironment = {
   getWorker(_moduleId, label) {
@@ -66,7 +66,7 @@ monaco.languages.typescript.typescriptDefaults.addExtraLib(
   'jsx.d.ts',
 );
 
-function getEditor(ref: HTMLDivElement, props: any = {}) {
+function getEditor(ref: HTMLElement, props: any = {}) {
   const editorInstance = monaco.editor.create(ref, {
     value: '',
     fontSize: 14,

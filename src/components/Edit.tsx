@@ -2,11 +2,11 @@ import { onDestroy, onMount, ref, watch } from 'essor';
 import { getEditor } from '../utils/monaco';
 import template from '../templates/template?raw';
 import { loadHashCode, setHashCode } from '../services/compile';
-import { compileMode, essorVersion } from '../utils';
+import { essorVersion } from '../utils';
 import CompileWorker from '../services/compile.worker?worker';
 
 export function Edit() {
-  const editRef = ref();
+  const editRef = ref<HTMLElement>();
   let editor;
   let compileWorker: Worker;
 
@@ -17,7 +17,6 @@ export function Edit() {
     compileWorker.postMessage({
       type: 'compile',
       code,
-      ssg: compileMode.value === 'server',
       version: essorVersion.value,
     });
   };
@@ -58,8 +57,6 @@ export function Edit() {
 
     resizeObserver.observe(editRef.value);
 
-    // Watch for compile mode and version changes to trigger recompilation
-    watch(compileMode, postMsg);
     watch(essorVersion, postMsg);
 
     onDestroy(() => {

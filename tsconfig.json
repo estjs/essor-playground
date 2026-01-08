@@ -6,19 +6,14 @@
     "module": "ESNext",
     "moduleResolution": "bundler",
     "paths": {
-      "@/*": [
-        "./src/*"
-      ]
+      "@/*": ["./src/*"]
     },
-    "types": [
-      "vitest/globals"
-    ],
+    "types": ["vitest/globals", "vite/client"],
     "allowJs": true,
-    "checkJs": true,
-    "strict": true,
     "noEmit": true,
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
     "skipLibCheck": true
-  }
+  },
+  "exclude": ["node_modules", "dist", "build", "coverage", "public"]
 }

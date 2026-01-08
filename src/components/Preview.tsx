@@ -6,8 +6,8 @@ import srcdoc from '../srcdoc.html?raw';
 import { getImportMapConfig } from '../utils/config';
 import { PreviewProxy } from './PreviewProxy';
 export function Preview() {
-  const compiledRef = ref();
-  const containerRef = ref();
+  const compiledRef = ref<HTMLElement>();
+  const containerRef = ref<HTMLElement>();
   let editor;
   let sandbox;
   let proxy;
@@ -143,8 +143,6 @@ export function Preview() {
 
   // Re-create sandbox when version changes
   effect(() => {
-    // Access essorVersion.value to track dependency
-    const v = essorVersion.value;
     if (containerRef.value && editor) {
       createSandbox();
     }
