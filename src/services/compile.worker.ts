@@ -3,7 +3,7 @@ import LocalBabelPlugin from 'babel-plugin-essor';
 
 interface CompileMessage {
   type: 'compile';
-  ssg: boolean;
+  mode: string;
   code: string;
   version: string;
 }
@@ -12,20 +12,22 @@ async function loadPlugin(version: string) {
   if (version === 'local') {
     return LocalBabelPlugin;
   }
+  const cleanVersion = version === 'latest' ? '' : `@${version}`;
   try {
-    const module = await import(/* @vite-ignore */ `https://esm.sh/babel-plugin-essor@${version}`);
-    return module.default;
+    const url = `https://esm.sh/babel-plugin-essor${cleanVersion}`;
+    const module = await import(/* @vite-ignore */ url);
+    return module.default || module;
   } catch (error) {
     console.error(`Failed to load plugin for version ${version}, falling back to local`, error);
     return LocalBabelPlugin;
   }
 }
 
-async function babelTransform(filename: string, code: string, ssg: boolean, version: string) {
+async function babelTransform(filename: string, code: string, mode: string, version: string) {
   try {
     const plugin = await loadPlugin(version);
     const transformedCode = transform(code, {
-      plugins: [[plugin, { ssg }]],
+      plugins: [[plugin, { mode, hmr: false }]],
       presets: ['typescript'],
       filename: `${filename}.tsx`,
     }).code;
@@ -41,16 +43,17 @@ self.addEventListener(
   async (message: MessageEvent<CompileMessage>) => {
     if (message.data.type === 'compile') {
       try {
-        const { code, ssg, version } = message.data;
-        const compiled = await babelTransform('test', code, ssg, version);
+        const { code, mode, version } = message.data;
+        const compiled = await babelTransform('test', code, mode, version);
         self.postMessage({
           type: 'compile-success',
           value: compiled,
         });
-      } catch (error) {
+      } catch (error: any) {
         self.postMessage({
           type: 'compile-error',
-          error: error instanceof Error ? error.message : String(error),
+          error: error.message || String(error),
+          loc: error.loc,
         });
       }
     }

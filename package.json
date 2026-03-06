@@ -11,29 +11,30 @@
     "test": "vitest"
   },
   "dependencies": {
-    "essor": "^0.0.15-beta.7"
+    "@unocss/reset": "^66.6.5",
+    "essor": "^0.0.15-beta.13"
   },
   "devDependencies": {
-    "@babel/core": "^7.28.5",
+    "@babel/core": "^7.29.0",
     "@babel/preset-typescript": "^7.28.5",
-    "@babel/standalone": "^7.28.5",
-    "@babel/types": "^7.28.5",
-    "@estjs/eslint-config": "^2.1.5",
-    "@iconify-json/carbon": "^1.2.15",
+    "@babel/standalone": "^7.29.1",
+    "@babel/types": "^7.29.0",
+    "@estjs/eslint-config": "^2.2.1",
+    "@iconify-json/carbon": "^1.2.19",
     "@types/babel__standalone": "^7.1.9",
-    "@types/node": "^25.0.3",
-    "babel-plugin-essor": "^0.0.15-beta.7",
-    "eslint": "^9.39.2",
+    "@types/node": "^25.3.5",
+    "babel-plugin-essor": "^0.0.15-beta.13",
+    "eslint": "^10.0.2",
     "fflate": "^0.8.2",
-    "happy-dom": "^20.0.11",
-    "lodash-es": "^4.17.22",
+    "happy-dom": "^20.8.3",
+    "lodash-es": "^4.17.23",
     "monaco-editor": "0.50.0",
-    "semver": "^7.7.3",
+    "semver": "^7.7.4",
     "typescript": "^5.9.3",
-    "unocss": "^66.5.12",
-    "unplugin-essor": "^0.0.15-beta.7",
-    "vite": "^7.3.0",
+    "unocss": "^66.6.5",
+    "unplugin-essor": "^0.0.15-beta.13",
+    "vite": "^7.3.1",
     "vite-plugin-inspect": "^11.3.3",
-    "vitest": "^4.0.16"
+    "vitest": "^4.0.18"
   }
 }

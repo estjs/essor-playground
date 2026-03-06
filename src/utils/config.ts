@@ -7,6 +7,10 @@ export function getImportMapConfig(version: string) {
     essor:
       isLocal && isDev
         ? new URL('../../../essor/packages/core/dist/essor.esm.js', import.meta.url).href
-        : `https://cdn.jsdelivr.net/npm/essor@${version === 'latest' ? 'latest' : version}/dist/essor.esm.js`,
+        : `https://esm.sh/essor@${version}`,
+    'essor/server':
+      isLocal && isDev
+        ? new URL('../../../essor/packages/server/dist/index.esm.js', import.meta.url).href
+        : `https://esm.sh/essor@${version}/server`,
   };
 }

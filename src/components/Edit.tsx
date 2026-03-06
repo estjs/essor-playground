@@ -2,7 +2,7 @@ import { onDestroy, onMount, ref, watch } from 'essor';
 import { getEditor } from '../utils/monaco';
 import template from '../templates/template?raw';
 import { loadHashCode, setHashCode } from '../services/compile';
-import { essorVersion } from '../utils';
+import { compileMode, essorVersion } from '../utils';
 import CompileWorker from '../services/compile.worker?worker';
 
 export function Edit() {
@@ -18,6 +18,7 @@ export function Edit() {
       type: 'compile',
       code,
       version: essorVersion.value,
+      mode: compileMode.value,
     });
   };
 
@@ -38,6 +39,7 @@ export function Edit() {
         self.postMessage({
           type: 'compile-error',
           error: e.data.error,
+          loc: e.data.loc,
         });
       }
     });
@@ -58,6 +60,7 @@ export function Edit() {
     resizeObserver.observe(editRef.value);
 
     watch(essorVersion, postMsg);
+    watch(compileMode, postMsg);
 
     onDestroy(() => {
       resizeObserver.disconnect();

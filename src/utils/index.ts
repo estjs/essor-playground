@@ -1,4 +1,5 @@
-import { signal } from 'essor';
+import { computed, signal } from 'essor';
+import semver from 'semver';
 import { strFromU8, strToU8, unzlibSync, zlibSync } from 'fflate';
 import * as monaco from 'monaco-editor';
 import { isDev } from './config';
@@ -47,13 +48,21 @@ export function setDark() {
 
 // Essor version and compile mode signals
 export const essorVersion = signal('latest');
-export const compileMode = signal<'client' | 'server'>('client');
+export const compileMode = signal<'client' | 'ssr' | 'ssg'>('client');
+
+export const isSSRSupported = computed(() => {
+  return (
+    essorVersion.value === 'local' ||
+    essorVersion.value === 'latest' ||
+    semver.gte(essorVersion.value, '0.0.15-0')
+  );
+});
 
 export function setEssorVersion(version: string) {
   essorVersion.value = version;
 }
 
-export function setCompileMode(mode: 'client' | 'server') {
+export function setCompileMode(mode: 'client' | 'ssr' | 'ssg') {
   compileMode.value = mode;
 }
 
@@ -74,10 +83,21 @@ export async function fetchEssorVersions() {
     const response = await fetch('https://api.github.com/repos/estjs/essor/tags');
     const data = await response.json();
     const versions = data.map((tag: { name: string }) => tag.name);
-    const allVersions = isDev ? ['local', ...versions] : versions;
+    const allVersions = isDev ? ['local', ...versions] : [...versions];
     essorVersions.value = allVersions;
-    essorVersion.value = essorVersions.value[0];
+    // Don't overwrite if already set (e.g. from URL)
+    if (essorVersion.value === 'latest' || !essorVersion.value) {
+      essorVersion.value = allVersions[0];
+    }
   } catch (error) {
     console.error('Failed to fetch essor versions:', error);
   }
 }
+
+// Ensure compileMode falls back to client if SSR is not supported by the version
+import { watch } from 'essor';
+watch(essorVersion, () => {
+  if (!isSSRSupported.value) {
+    compileMode.value = 'client';
+  }
+});
