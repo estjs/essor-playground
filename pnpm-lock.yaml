@@ -68,7 +68,7 @@ importers:
         version: 66.6.5(vite@7.3.1(@types/node@25.3.5)(jiti@2.6.1)(yaml@2.8.2))
       unplugin-essor:
         specifier: ^0.0.15-beta.13
-        version: 0.0.15-beta.13(esbuild@0.27.2)(rollup@4.54.0)(vite@7.3.1(@types/node@25.3.5)(jiti@2.6.1)(yaml@2.8.2))
+        version: 0.0.15(esbuild@0.27.2)(rollup@4.54.0)(vite@7.3.1(@types/node@25.3.5)(jiti@2.6.1)(yaml@2.8.2))
       vite:
         specifier: ^7.3.1
         version: 7.3.1(@types/node@25.3.5)(jiti@2.6.1)(yaml@2.8.2)
@@ -493,6 +493,9 @@ packages:
 
   '@estjs/server@0.0.15-beta.13':
     resolution: {integrity: sha512-Wt+mZ+0kG89vVprRVdSeIPGomY9xZAxbAT3k5bnZ4WP16JTJird3AdBtnTfMrHBJ3xBIpMmnQKr/e8qLUWh1Sg==}
+
+  '@estjs/shared@0.0.15':
+    resolution: {integrity: sha512-e46ESwrH/6o487EFz5AEIUOwV+cJSOm/Y/03ysFjZdol37vTfFIAuoAvd1okYPfJbfSqeIMonONHJSOaPNS89Q==}
 
   '@estjs/shared@0.0.15-beta.13':
     resolution: {integrity: sha512-OSNPShVmVlpM6/kOYi59bFEXd+Q12jyanSEIFbT1WUUdEmTYFRVceobLroJtFo09qW0PWOFciFdsNOG4x49u5w==}
@@ -1297,6 +1300,9 @@ packages:
   ajv@6.14.0:
     resolution: {integrity: sha512-IWrosm/yrn43eiKqkfkHis7QioDleaXQHdDVPKg0FSwwd/DuvyX79TZnFOnYpB7dcsFAMmtFztZuXPDvSePkFw==}
 
+  ajv@6.15.0:
+    resolution: {integrity: sha512-fgFx7Hfoq60ytK2c7DhnF8jIvzYgOMxfugjLOSMHjLIPgenqa7S7oaagATUq99mV6IYvN2tRmC0wnTYX6iPbMw==}
+
   ansis@4.2.0:
     resolution: {integrity: sha512-HqZ5rWlFjGiV0tDm3UxxgNRqsOTniqoKZu0pIAfh7TZQMGuZK+hH0drySty0si0QXj1ieop4+SkSfPZBPPkHig==}
     engines: {node: '>=14'}
@@ -1344,6 +1350,9 @@ packages:
   available-typed-arrays@1.0.7:
     resolution: {integrity: sha512-wvUjBtSGN7+7SjNpq/9M2Tg350UZD3q62IFZLbRAR1bSMlCo1ZaeW+BJ+D090e4hIIZLBcTDWe4Mh4jvUDajzQ==}
     engines: {node: '>= 0.4'}
+
+  babel-plugin-essor@0.0.15:
+    resolution: {integrity: sha512-TfMox2m6xSnDnDPywtUws6IkShZ+2nlz758ibEWTLHQZlOGjXk10uEHzYYLj1pzTkSCguV50ykCBEOCgQ7waOg==}
 
   babel-plugin-essor@0.0.15-beta.13:
     resolution: {integrity: sha512-uYqIAHL5OnMMRT9zuih3ERvts0lALcHkFCV8ZwwAqSRDCOEGbuEj14TNanpVRpa55F1h8UV+HK3WaWqOdYTPDQ==}
@@ -2523,6 +2532,10 @@ packages:
     resolution: {integrity: sha512-5gTmgEY/sqK6gFXLIsQNH19lWb4ebPDLA4SdLP7dsWkIXHWlG66oPuVvXSGFPppYZz8ZDZq0dYYrbHfBCVUb1Q==}
     engines: {node: '>=12'}
 
+  picomatch@4.0.4:
+    resolution: {integrity: sha512-QP88BAKvMam/3NxH6vj2o21R6MjxZUAd6nlwAS/pnGvN9IVLocLHxGYIzFhg6fUQ+5th6P4dv4eW9jX3DSIj7A==}
+    engines: {node: '>=12'}
+
   pkg-types@1.3.1:
     resolution: {integrity: sha512-/Jm5M4RvtBFVkKWRu2BLUTNP8/M2a+UwuAX+ae4770q1qVGtfjG+WTCupoZixokjmHiry8uI+dlY8KXYV5HVVQ==}
 
@@ -2647,6 +2660,11 @@ packages:
 
   semver@7.7.4:
     resolution: {integrity: sha512-vFKC2IEtQnVhpT78h1Yp8wzwrf8CM+MzKMHGJZfBtzhZNycRFnXsHk6E5TxIkkMsgNS7mdX3AGB7x2QM2di4lA==}
+    engines: {node: '>=10'}
+    hasBin: true
+
+  semver@7.8.0:
+    resolution: {integrity: sha512-AcM7dV/5ul4EekoQ29Agm5vri8JNqRyj39o0qpX6vDF2GZrtutZl5RwgD1XnZjiTAfncsJhMI48QQH3sN87YNA==}
     engines: {node: '>=10'}
     hasBin: true
 
@@ -2863,8 +2881,8 @@ packages:
       '@unocss/webpack':
         optional: true
 
-  unplugin-essor@0.0.15-beta.13:
-    resolution: {integrity: sha512-4W4ZfylwrPg9R+2ebQNDAzcL3Avp2tqYTCODG15fbNAyQhIpMABIU1uqo9cyq7u0QgtuGVcQ2bcOqPTzKvYQFA==}
+  unplugin-essor@0.0.15:
+    resolution: {integrity: sha512-+uboMZVvtsY444L867otsTtYrXVUFvxscqhp7HnyDM7a80k+8bsKRmuzT9gT7HjvR29/XLGISFpLuz2uHDmmbw==}
     peerDependencies:
       esbuild: '*'
       farm: '*'
@@ -3566,6 +3584,8 @@ snapshots:
       '@estjs/shared': 0.0.15-beta.13
       '@estjs/template': 0.0.15-beta.13
 
+  '@estjs/shared@0.0.15': {}
+
   '@estjs/shared@0.0.15-beta.13': {}
 
   '@estjs/signals@0.0.15-beta.13':
@@ -3949,11 +3969,11 @@ snapshots:
       '@typescript-eslint/parser': 8.56.1(eslint@10.0.2(jiti@2.6.1))(typescript@5.9.3)
       '@typescript-eslint/typescript-estree': 8.56.1(typescript@5.9.3)
       '@typescript-eslint/utils': 8.56.1(eslint@10.0.2(jiti@2.6.1))(typescript@5.9.3)
-      ajv: 6.14.0
+      ajv: 6.15.0
       eslint: 10.0.2(jiti@2.6.1)
       json-stable-stringify-without-jsonify: 1.0.1
       lodash.merge: 4.6.2
-      semver: 7.7.4
+      semver: 7.8.0
     transitivePeerDependencies:
       - supports-color
       - typescript
@@ -4269,10 +4289,6 @@ snapshots:
       '@vitest/pretty-format': 4.0.18
       tinyrainbow: 3.0.3
 
-  acorn-jsx@5.3.2(acorn@8.15.0):
-    dependencies:
-      acorn: 8.15.0
-
   acorn-jsx@5.3.2(acorn@8.16.0):
     dependencies:
       acorn: 8.16.0
@@ -4282,6 +4298,13 @@ snapshots:
   acorn@8.16.0: {}
 
   ajv@6.14.0:
+    dependencies:
+      fast-deep-equal: 3.1.3
+      fast-json-stable-stringify: 2.1.0
+      json-schema-traverse: 0.4.1
+      uri-js: 4.4.1
+
+  ajv@6.15.0:
     dependencies:
       fast-deep-equal: 3.1.3
       fast-json-stable-stringify: 2.1.0
@@ -4356,6 +4379,13 @@ snapshots:
   available-typed-arrays@1.0.7:
     dependencies:
       possible-typed-array-names: 1.1.0
+
+  babel-plugin-essor@0.0.15:
+    dependencies:
+      '@babel/core': 7.29.0
+      '@estjs/shared': 0.0.15
+    transitivePeerDependencies:
+      - supports-color
 
   babel-plugin-essor@0.0.15-beta.13:
     dependencies:
@@ -4981,8 +5011,8 @@ snapshots:
 
   espree@10.4.0:
     dependencies:
-      acorn: 8.15.0
-      acorn-jsx: 5.3.2(acorn@8.15.0)
+      acorn: 8.16.0
+      acorn-jsx: 5.3.2(acorn@8.16.0)
       eslint-visitor-keys: 4.2.1
 
   espree@11.1.1:
@@ -5733,7 +5763,7 @@ snapshots:
 
   mlly@1.8.0:
     dependencies:
-      acorn: 8.15.0
+      acorn: 8.16.0
       pathe: 2.0.3
       pkg-types: 1.3.1
       ufo: 1.6.1
@@ -5910,6 +5940,8 @@ snapshots:
 
   picomatch@4.0.3: {}
 
+  picomatch@4.0.4: {}
+
   pkg-types@1.3.1:
     dependencies:
       confbox: 0.1.8
@@ -6068,6 +6100,8 @@ snapshots:
   semver@6.3.1: {}
 
   semver@7.7.4: {}
+
+  semver@7.8.0: {}
 
   set-function-length@1.2.2:
     dependencies:
@@ -6233,7 +6267,7 @@ snapshots:
 
   ts-declaration-location@1.0.7(typescript@5.9.3):
     dependencies:
-      picomatch: 4.0.3
+      picomatch: 4.0.4
       typescript: 5.9.3
 
   tslib@2.8.1:
@@ -6345,10 +6379,10 @@ snapshots:
     transitivePeerDependencies:
       - vite
 
-  unplugin-essor@0.0.15-beta.13(esbuild@0.27.2)(rollup@4.54.0)(vite@7.3.1(@types/node@25.3.5)(jiti@2.6.1)(yaml@2.8.2)):
+  unplugin-essor@0.0.15(esbuild@0.27.2)(rollup@4.54.0)(vite@7.3.1(@types/node@25.3.5)(jiti@2.6.1)(yaml@2.8.2)):
     dependencies:
       '@babel/core': 7.29.0
-      babel-plugin-essor: 0.0.15-beta.13
+      babel-plugin-essor: 0.0.15
       unplugin: 2.3.11
     optionalDependencies:
       esbuild: 0.27.2
@@ -6365,8 +6399,8 @@ snapshots:
   unplugin@2.3.11:
     dependencies:
       '@jridgewell/remapping': 2.3.5
-      acorn: 8.15.0
-      picomatch: 4.0.3
+      acorn: 8.16.0
+      picomatch: 4.0.4
       webpack-virtual-modules: 0.6.2
 
   unrs-resolver@1.11.1:
